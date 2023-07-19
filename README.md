@@ -10,7 +10,7 @@ Group project for Software Design, focused around creating a grocery store with 
 Native application for android devices.
 	
 ## Technologies
-Project is created with:
+Project is created with: <br>
 ![Android Studio](https://img.shields.io/badge/Android%20Studio-3DDC84.svg?style=for-the-badge&logo=android-studio&logoColor=white) 
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white) 
 ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white) 
