@@ -1,4 +1,4 @@
-# CSCB07 Grocery Store App
+# Grocery Store App
 
 ## Table of contents
 * [General info](#general-info)
