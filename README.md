@@ -8,8 +8,6 @@
 ## General info
 Group project for Software Design, focused around creating a grocery store with OOP principles.
 Native application for android devices.
-
-Testing GitHub Push
 	
 ## Technologies
 Project is created with: <br>
