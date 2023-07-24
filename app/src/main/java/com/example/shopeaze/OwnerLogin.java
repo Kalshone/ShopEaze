@@ -29,7 +29,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.ktx.Firebase;
 
-public class Login extends Fragment {       //shopper login
+public class OwnerLogin extends Fragment {       //owner login
 
     TextInputEditText editTextEmail, editTextPassword;
     Button buttonLogin;
@@ -47,15 +47,15 @@ public class Login extends Fragment {       //shopper login
         FirebaseUser currentUser = mAuth.getCurrentUser();
         //Check if current user is a shopper or a seller
         if(currentUser != null){
-            NavHostFragment.findNavController(Login.this)
-                    .navigate(R.id.action_Login_to_logout);
+            NavHostFragment.findNavController(OwnerLogin.this)
+                    .navigate(R.id.action_ownerLogin_to_logout);
         }
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.activity_login, container, false);
+        return inflater.inflate(R.layout.fragment_owner_login, container, false);
     }
 
     @Override
@@ -70,8 +70,8 @@ public class Login extends Fragment {       //shopper login
         textView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                NavHostFragment.findNavController(Login.this)
-                        .navigate(R.id.action_Login_to_SignUp);
+                NavHostFragment.findNavController(OwnerLogin.this)
+                        .navigate(R.id.action_ownerLogin_to_OwnerSignUp);
             }
         });
 
@@ -105,7 +105,7 @@ public class Login extends Fragment {       //shopper login
                                     //Get the current user:
                                     FirebaseUser user = mAuth.getCurrentUser();
                                     Toast.makeText(getActivity(), "Login Successful", Toast.LENGTH_SHORT).show();
-                                    NavHostFragment.findNavController(Login.this).navigate(R.id.action_Login_to_logout);
+                                    NavHostFragment.findNavController(OwnerLogin.this).navigate(R.id.action_ownerLogin_to_logout);
                                 } else {
                                     Toast.makeText(getActivity(), "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();

@@ -17,9 +17,6 @@
             android:id="@+id/action_Login_to_logout"
             app:destination="@id/logout" />
         <action
-            android:id="@+id/action_Login_to_ProductList"
-            app:destination="@id/ProductList" />
-        <action
             android:id="@+id/action_Login_to_orderFragment"
             app:destination="@id/orderFragment" />
     </fragment>
@@ -34,8 +31,8 @@
             android:id="@+id/action_WelcomeScreen_to_Login"
             app:destination="@id/Login" />
         <action
-            android:id="@+id/action_WelcomeScreen_to_OwnerSignUp"
-            app:destination="@id/OwnerSignUp" />
+            android:id="@+id/action_WelcomeScreen_to_ownerLogin"
+            app:destination="@id/ownerLogin" />
 
     </fragment>
     <fragment
@@ -54,17 +51,14 @@
         tools:layout="@layout/activity_sign_up_owner" >
 
         <action
-            android:id="@+id/action_OwnerSignUp_to_Login"
-            app:destination="@id/Login" />
-        <action
-            android:id="@+id/action_OwnerSignUp_to_logout"
-            app:destination="@id/logout" />
-        <action
             android:id="@+id/action_OwnerSignUp_to_ProductList"
             app:destination="@id/recyclerViewProducts" />
         <action
-            android:id="@+id/action_OwnerSignUp_to_ProductList2"
-            app:destination="@id/ProductList" />
+            android:id="@+id/action_OwnerSignUp_to_ownerLogin"
+            app:destination="@id/ownerLogin" />
+        <action
+            android:id="@+id/action_OwnerSignUp_to_logout"
+            app:destination="@id/logout" />
     </fragment>
 
     <fragment
@@ -87,6 +81,23 @@
         android:name="com.example.shopeaze.OrderFragment"
         android:label="fragment_orders"
         tools:layout="@layout/fragment_orders" />
+
+    <fragment
+        android:id="@+id/ownerLogin"
+        android:name="com.example.shopeaze.OwnerLogin"
+        android:label="OwnerLogin"
+        tools:layout="@layout/fragment_owner_login">
+        <action
+            android:id="@+id/action_ownerLogin_to_OwnerSignUp"
+            app:destination="@id/OwnerSignUp" />
+        <action
+            android:id="@+id/action_ownerLogin_to_logout"
+            app:destination="@id/logout" />
+        <action
+            android:id="@+id/action_ownerLogin_to_ProductList"
+            app:destination="@id/ProductList" />
+    </fragment>
+
 
 
 </navigation>
