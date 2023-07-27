@@ -10,4 +10,12 @@
     <string name="lorem_ipsum">
         Text.
     </string>
+    <string name="login">Login</string>
+    <string name="username">username</string>
+    <string name="Username">Username</string>
+    <string name="Password">Password</string>
+    <string name="Login">Login</string>
+    <string name="Sign_up">Sign Up</string>
+    <string name="Email">Email</string>
+    <string name="email">Email</string>
 </resources>

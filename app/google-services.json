@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "610380066648",
+    "firebase_url": "https://grocery-d4fbb-default-rtdb.firebaseio.com",
+    "project_id": "grocery-d4fbb",
+    "storage_bucket": "grocery-d4fbb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610380066648:android:886108254cbd7f24cc3f2d",
+        "android_client_info": {
+          "package_name": "com.example.shopeaze"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "610380066648-3kd0pk87mveh23m39qcgbpf0s086qi3s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDajY29Y4jv8zOojD-1Y-JzhdhsbxwVS_8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "610380066648-3kd0pk87mveh23m39qcgbpf0s086qi3s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
