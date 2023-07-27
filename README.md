@@ -6,8 +6,8 @@
 * [Setup](#setup)
 
 ## General info
-Group project for Software Design, focused around creating a grocery store with OOP principles.
-Native application for android devices.
+A group project for Software Design focused on creating an online store with OOP principles.
+Native application for Android devices.
 	
 ## Technologies
 Project is created with: <br>
