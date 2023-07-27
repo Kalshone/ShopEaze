@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,14 +6,19 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.example.shopeaze.FirstFragment"
+        android:name="com.example.shopeaze.WelcomeScreen"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        tools:layout="@layout/fragment_welcome">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_FirstFragment_to_ShopperFragment"
+            app:destination="@id/ShopperFragment" />
+
+        <action
+            android:id="@+id/action_FirstFragment_to_OwnerFragment"
+            app:destination="@id/OwnerFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/SecondFragment"
         android:name="com.example.shopeaze.SecondFragment"
@@ -25,4 +29,20 @@
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
+
+    <!-- Add the new fragments for Shopper and Owner screens -->
+
+    <!--
+    <fragment
+        android:id="@+id/ShopperFragment"
+        android:name="com.example.shopeaze.ShopperFragment"
+        android:label="@string/shopper_fragment_label"
+        tools:layout="@layout/fragment_shopper" />
+
+    <fragment
+        android:id="@+id/OwnerFragment"
+        android:name="com.example.shopeaze.OwnerFragment"
+        android:label="@string/owner_fragment_label"
+        tools:layout="@layout/fragment_owner" />
+    -->
 </navigation>
