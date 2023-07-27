@@ -10,11 +10,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.shopeaze.databinding.FragmentFirstBinding;
+import com.example.shopeaze.databinding.FragmentWelcomeBinding;
 
 public class WelcomeScreen extends Fragment {
 
-    private FragmentFirstBinding binding;
+    private FragmentWelcomeBinding binding;
 
     @Override
     public View onCreateView(
@@ -22,7 +22,7 @@ public class WelcomeScreen extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = FragmentFirstBinding.inflate(inflater, container, false);
+        binding = FragmentWelcomeBinding.inflate(inflater, container, false);
         return binding.getRoot();
 
     }
