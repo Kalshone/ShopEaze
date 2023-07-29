@@ -14,6 +14,7 @@
     <string name="username">username</string>
     <string name="Username">Username</string>
     <string name="Password">Password</string>
+    <string name="StoreName">Store Name</string>
     <string name="ShopperLogin">Shopper Login</string>
     <string name="Owner_Login">Owner Login</string>
     <string name="Sign_up">Sign Up</string>

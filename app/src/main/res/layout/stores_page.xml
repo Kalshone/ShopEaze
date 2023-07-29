@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="4dp"
+        android:text="Hi"
+        android:textColor="#3F51B5"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/textView4"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="236dp"
+        android:text="@string/Username"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/Store1"
+        android:layout_width="140dp"
+        android:layout_height="58dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="112dp"
+        android:background="@drawable/roundcorner"
+        android:scaleType="centerCrop"
+        android:src="@drawable/aritzia_logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/Store3"
+        android:layout_width="139dp"
+        android:layout_height="59dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/roundcorner"
+        android:contentDescription="Aritzia"
+        android:scaleType="centerCrop"
+        android:src="@drawable/aritzia_logo"
+        app:layout_constraintTop_toBottomOf="@+id/Store1"
+        tools:layout_editor_absoluteX="56dp" />
+
+    <ImageButton
+        android:id="@+id/Store2"
+        android:layout_width="139dp"
+        android:layout_height="58dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="112dp"
+        android:layout_marginEnd="44dp"
+        android:background="@drawable/roundcorner"
+        android:contentDescription="Aritzia"
+        android:scaleType="centerCrop"
+        android:src="@drawable/aritzia_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/OrdersButton"
+        android:layout_width="98dp"
+        android:layout_height="64dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/roundcorner"
+        android:contentDescription="OrdersButton"
+        android:scaleType="fitXY"
+        android:src="@drawable/orders_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ordersButton" />
+
+    <ImageButton
+        android:id="@+id/ordersButton"
+        android:layout_width="98dp"
+        android:layout_height="64dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/roundcorner"
+        android:contentDescription="CartButton"
+        android:scaleType="fitXY"
+        android:src="@drawable/cart_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageButton
+        android:id="@+id/ordersButton2"
+        android:layout_width="95dp"
+        android:layout_height="69dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/roundcorner"
+        android:contentDescription="HomeButton"
+        android:scaleType="fitXY"
+        android:src="@drawable/home_button_clicked"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/OrdersButton" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
