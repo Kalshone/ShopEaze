@@ -6,35 +6,43 @@
     android:layout_height="match_parent"
     tools:context=".WelcomeScreen">
 
+    <!--        app:layout_constraintBottom_toTopOf="@+id/button_shopper"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent" />-->
+
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="320dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="196dp"
         android:text="I am a..."
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/button_shopper"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button_shopper"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="320dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="40dp"
         android:text="Shopper"
-        app:layout_constraintEnd_toStartOf="@+id/button_owner"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
         android:id="@+id/button_owner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Owner"
+        android:layout_width="320dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="40dp"
+        android:text="Store Owner"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button_shopper"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_shopper" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

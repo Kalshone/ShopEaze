@@ -12,11 +12,13 @@
 
         <action
             android:id="@+id/action_FirstFragment_to_ShopperFragment"
-            app:destination="@id/ShopperFragment" />
+            app:destination="@id/FirstFragment"
+            />
 
         <action
             android:id="@+id/action_FirstFragment_to_OwnerFragment"
-            app:destination="@id/OwnerFragment" />
+            app:destination="@id/FirstFragment"
+            />
     </fragment>
 
     <fragment

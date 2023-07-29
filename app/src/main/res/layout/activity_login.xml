@@ -3,32 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
     android:layout_height="match_parent"
+    android:background="@drawable/beach_background"
+    android:gravity="center"
+    android:orientation="vertical"
     android:padding="15dp"
     tools:context=".Login">
 
     <TextView
-        android:text="@string/login"
-        android:textSize="30sp"
-        android:textStyle="bold"
+        android:layout_width="378dp"
+        android:layout_height="109dp"
         android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:text="@string/ShopperLogin"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/email"
-            android:hint="@string/Email"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="78dp"
+            android:hint="@string/Email"
+            android:textColor="#FFFFFF">
 
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
-
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -37,18 +40,27 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password"
-            android:hint="@string/Password"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="81dp"
+            android:hint="@string/Password"
+            android:textColor="#FFFFFF">
 
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btn_login"
-        android:text="@string/Login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="282dp"
+        android:layout_height="65dp"
+        android:bottomLeftRadius="100dp"
+        android:bottomRightRadius="10dp"
+        android:text="@string/login"
+        android:textColorHighlight="#AB8971"
+        android:textColorLink="#AB8971"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:topLeftRadius="100dp"
+        android:topRightRadius="10dp" />
 
 
 </LinearLayout>

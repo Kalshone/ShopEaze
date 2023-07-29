@@ -3,32 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:gravity="center"
+    android:orientation="vertical"
     android:padding="15dp"
     tools:context=".SignUp">
 
     <TextView
-        android:text="@string/Sign_up"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/Sign_up"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/email"
-            android:hint="@string/email"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:hint="@string/email"
+            android:textColor="#FFFFFF">
 
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
-
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -37,18 +40,24 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password"
-            android:hint="@string/Password"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:hint="@string/Password">
 
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btn_signup"
-        android:text="@string/Sign_up"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="282dp"
+        android:layout_height="65dp"
+        android:bottomLeftRadius="100dp"
+        android:bottomRightRadius="10dp"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:topLeftRadius="100dp"
+        android:topRightRadius="10dp"
+        android:text="@string/Sign_up" />
 
 
 </LinearLayout>
