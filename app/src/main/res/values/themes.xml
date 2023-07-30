@@ -2,7 +2,8 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.ShopEaze" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<!--         <item name="colorPrimary">@color/#AB8971</item>-->
+
     </style>
 
     <style name="Theme.ShopEaze" parent="Base.Theme.ShopEaze" />
