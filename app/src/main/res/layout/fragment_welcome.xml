@@ -7,10 +7,11 @@
     tools:context=".WelcomeScreen">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="I am a..."
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/button_shopper"
         app:layout_constraintEnd_toEndOf="parent"

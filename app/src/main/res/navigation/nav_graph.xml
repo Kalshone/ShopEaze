@@ -2,32 +2,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/WelcomeScreen">
 
     <fragment
-        android:id="@+id/FirstFragment"
+        android:id="@+id/WelcomeScreen"
         android:name="com.example.shopeaze.WelcomeScreen"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_welcome">
+        tools:layout="@layout/activity_main">
 
         <action
             android:id="@+id/action_FirstFragment_to_ShopperFragment"
-            app:destination="@id/ShopperFragment" />
+            app:destination="@id/SecondFragment" />
 
-        <action
+        <!-- <action
             android:id="@+id/action_FirstFragment_to_OwnerFragment"
-            app:destination="@id/OwnerFragment" />
+            app:destination="@id/OwnerFragment" /> -->
     </fragment>
 
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.example.shopeaze.SecondFragment"
+        android:name="com.example.shopeaze.Login"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        tools:layout="@layout/activity_login">
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            app:destination="@id/WelcomeScreen" />
     </fragment>
 
     <!-- Add the new fragments for Shopper and Owner screens -->
