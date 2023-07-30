@@ -20,4 +20,9 @@
     <string name="Sign_up">Sign Up</string>
     <string name="Email">Email</string>
     <string name="email">Email</string>
+    <string name="click_to_login">Click To Login</string>
+    <string name="don_t_have_an_account_sign_up">Don\'t have an account? Sign Up!</string>
+    <string name="click_here_to_create_an_account">Click here to create an account</string>
+    <string name="create_an_account">Create An Account</string>
+    <string name="log_out">Log Out</string>
 </resources>

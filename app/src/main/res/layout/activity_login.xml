@@ -34,6 +34,7 @@
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
 
+<!--password:-->
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -49,6 +50,12 @@
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <Button
         android:id="@+id/btn_login"
         android:layout_width="282dp"
@@ -62,6 +69,16 @@
         android:textStyle="bold"
         android:topLeftRadius="100dp"
         android:topRightRadius="10dp" />
+
+    <TextView
+        android:id="@+id/signUpNow"
+        android:text="@string/create_an_account"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginTop="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 
 </LinearLayout>

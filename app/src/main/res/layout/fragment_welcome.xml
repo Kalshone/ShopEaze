@@ -11,12 +11,14 @@
     <!--        app:layout_constraintStart_toStartOf="parent" />-->
 
     <TextView
+        android:text="I am a..."
         android:id="@+id/textView"
         android:layout_width="320dp"
         android:layout_height="60dp"
         android:layout_marginTop="196dp"
         android:text="I am a..."
         android:textSize="30sp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
