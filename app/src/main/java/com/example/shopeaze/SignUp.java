@@ -3,6 +3,7 @@ package com.example.shopeaze;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,6 +22,12 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 
 public class SignUp extends Fragment {
 
@@ -30,16 +37,21 @@ public class SignUp extends Fragment {
     ProgressBar progressBar;
     TextView textView;
 
+    FirebaseDatabase db;
+
+
     @Override
     public void onStart() {
         super.onStart();
+        //new line:
+        db = FirebaseDatabase.getInstance("https://grocery-d4fbb-default-rtdb.firebaseio.com//");
+        //old:
         mAuth = FirebaseAuth.getInstance();
         // Check if user is already signed in (non-null)
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
-            Intent intent = new Intent(getActivity(), MainActivity.class);
-            startActivity(intent);
-            getActivity().finish();
+            NavHostFragment.findNavController(SignUp.this)
+                    .navigate(R.id.action_logout_to_WelcomeScreen);
         }
     }
 
@@ -62,15 +74,15 @@ public class SignUp extends Fragment {
         textView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(getActivity(), Login.class);
-                startActivity(intent);
-                getActivity().finish();
+                NavHostFragment.findNavController(SignUp.this)
+                        .navigate(R.id.action_signUp_to_Login);
             }
         });
 
         buttonSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                DatabaseReference ref= db.getReference();   //new
                 progressBar.setVisibility(View.VISIBLE);
                 String email;
                 String password;
@@ -100,11 +112,11 @@ public class SignUp extends Fragment {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 progressBar.setVisibility(View.GONE);
                                 if (task.isSuccessful()) {
+                                    //ref.child("Users").child("Shopper").child("Email").setValue(email); //new line
                                     Toast.makeText(getActivity(), "Account Created.",
                                             Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(getActivity(), Login.class);
-                                    startActivity(intent);
-                                    getActivity().finish();
+                                    NavHostFragment.findNavController(SignUp.this)
+                                            .navigate(R.id.action_signUp_to_Login);
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     Toast.makeText(getActivity(), "Authentication failed.",

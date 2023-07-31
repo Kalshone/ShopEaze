@@ -5,9 +5,23 @@
     app:startDestination="@id/WelcomeScreen">
 
     <fragment
+        android:id="@+id/Login"
+        android:name="com.example.shopeaze.Login"
+        android:label="@string/Login"
+        tools:layout="@layout/activity_login">
+
+        <action
+            android:id="@+id/action_Login_to_SignUp"
+            app:destination="@id/signUp"   />
+        <action
+            android:id="@+id/action_Login_to_logout"
+            app:destination="@id/logout" />
+    </fragment>
+
+    <fragment
         android:id="@+id/WelcomeScreen"
         android:name="com.example.shopeaze.WelcomeScreen"
-        android:label="@string/first_fragment_label"
+        android:label="@string/Welcome_screen"
         tools:layout="@layout/activity_main">
 
         <action
@@ -22,32 +36,31 @@
             app:destination="@id/FirstFragment"
             />
 
+
+<!--             android:id="@+id/action_WelcomeScreen_to_Login"
+            app:destination="@id/Login" />  THIS WAS IN MAINNNNNNNNNNNNNN-->
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/signUp"
+        android:name="com.example.shopeaze.SignUp"
+        android:label="activity_sign_up"
+        tools:layout="@layout/activity_sign_up" >
+        <action
+            android:id="@+id/action_signUp_to_Login"
+            app:destination="@id/Login" />
     </fragment>
 
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.shopeaze.Login"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/activity_login">
-
+        android:id="@+id/logout"
+        android:name="com.example.shopeaze.Logout"
+        android:label="activity_logout"
+        tools:layout="@layout/activity_logout" >
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            android:id="@+id/action_logout_to_WelcomeScreen"
             app:destination="@id/WelcomeScreen" />
     </fragment>
 
-    <!-- Add the new fragments for Shopper and Owner screens -->
 
-    <!--
-    <fragment
-        android:id="@+id/ShopperFragment"
-        android:name="com.example.shopeaze.ShopperFragment"
-        android:label="@string/shopper_fragment_label"
-        tools:layout="@layout/fragment_shopper" />
-
-    <fragment
-        android:id="@+id/OwnerFragment"
-        android:name="com.example.shopeaze.OwnerFragment"
-        android:label="@string/owner_fragment_label"
-        tools:layout="@layout/fragment_owner" />
-    -->
 </navigation>
