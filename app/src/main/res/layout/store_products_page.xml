@@ -6,7 +6,33 @@
     android:layout_height="match_parent">
 
     <ImageButton
+        android:id="@+id/back_button"
+        android:layout_width="60dp"
+        android:layout_height="62dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="47dp"
+        android:background="@drawable/roundcorner"
+        android:contentDescription="Back Button"
+        android:padding="20dp"
+        android:paddingStart="20dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
+        android:paddingEnd="20dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="20dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/back_button"
+        app:layout_constraintEnd_toStartOf="@+id/StoreButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
         android:id="@+id/StoreButton"
+        android:contentDescription="Store Name"
         android:layout_width="124dp"
         android:layout_height="62dp"
         android:layout_alignParentTop="true"
@@ -55,22 +81,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/back_button"
-        android:layout_width="25dp"
-        android:layout_height="28dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-
-        android:background="@drawable/roundcorner"
-        android:contentDescription="BackButton"
-        android:scaleType="fitXY"
-        android:src="@drawable/back_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.098"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="51dp" />
-
-    <ImageButton
         android:id="@+id/ordersButton"
         android:layout_width="98dp"
         android:layout_height="64dp"
@@ -81,8 +91,8 @@
         android:contentDescription="OrdersButton"
         android:scaleType="fitXY"
         android:src="@drawable/orders_button"
-        app:layout_constraintEnd_toStartOf="@+id/cartButton"
-        tools:layout_editor_absoluteY="667dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/cartButton" />
 
     <ImageButton
         android:id="@+id/cartButton"
@@ -91,7 +101,6 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_marginEnd="44dp"
-        android:layout_marginBottom="0dp"
         android:background="@drawable/roundcorner"
         android:contentDescription="CartButton"
         android:scaleType="fitXY"
@@ -110,8 +119,8 @@
         android:contentDescription="HomeButton"
         android:scaleType="fitXY"
         android:src="@drawable/home_button_clicked"
-        app:layout_constraintEnd_toStartOf="@+id/ordersButton"
-        tools:layout_editor_absoluteY="662dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ordersButton" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
