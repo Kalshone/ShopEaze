@@ -3,8 +3,6 @@ plugins {
     id 'com.google.gms.google-services'
 }
 
-
-
 android {
     namespace 'com.example.shopeaze'
     compileSdk 33
@@ -18,8 +16,6 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
-
 
     buildTypes {
         release {
