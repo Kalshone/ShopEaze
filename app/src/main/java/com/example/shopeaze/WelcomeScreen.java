@@ -35,7 +35,7 @@ public class WelcomeScreen extends Fragment {
             @Override
             public void onClick(View view) {
                 NavHostFragment.findNavController(WelcomeScreen.this)
-                        .navigate(R.id.action_FirstFragment_to_ShopperFragment);
+                        .navigate(R.id.action_WelcomeScreen_to_Login);
             }
         });
 
