@@ -16,7 +16,7 @@ maintaining a local copy of the products for efficient access and display w/i th
 
 public class ProductList {
     private DatabaseReference databaseReference;
-    private List<Product> products;
+    public List<Product> products;
 
     public ProductList() {
         FirebaseDatabase database = FirebaseDatabase.getInstance();

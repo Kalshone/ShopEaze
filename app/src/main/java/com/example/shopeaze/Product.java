@@ -9,6 +9,8 @@ public class Product {
     private String productDescription;
     private double productPrice;
 
+    public Product() {}
+
     // Constructor
     public Product(String name, String brand, double price, String description) {
         this.productID = generateProductID();

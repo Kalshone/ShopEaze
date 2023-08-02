@@ -13,9 +13,15 @@ import java.util.List;
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
 
     private List<Product> products;
+    private OnItemClickListener itemClickListener;
 
-    public ProductAdapter(List<Product> products) {
+    public interface OnItemClickListener {
+        void onItemClick(Product product);
+    }
+
+    public ProductAdapter(List<Product> products, OnItemClickListener itemClickListener) {
         this.products = products;
+        this.itemClickListener = itemClickListener;
     }
 
     @Override
