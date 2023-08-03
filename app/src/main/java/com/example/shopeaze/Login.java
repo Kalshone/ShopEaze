@@ -5,7 +5,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -118,9 +117,6 @@ public class Login extends Fragment {
                                             if(snapshot.exists()){
                                                 //user is a seller
                                                 Toast.makeText(getActivity(), "Login Successful", Toast.LENGTH_SHORT).show();
-                                                //Intent intent = new Intent(getActivity(), LogoutActivity.class);
-                                                //startActivity(intent);
-                                                //getActivity().finish();
                                                 NavHostFragment.findNavController(Login.this)
                                                         .navigate(R.id.action_Login_to_ProductList);
                                             }

@@ -19,7 +19,6 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -38,7 +37,7 @@ public class OwnerSignUp extends Fragment {
     private FirebaseDatabase db;
     FirebaseAuth mAuth;
 
-
+    @Override
     public void onStart() {
         super.onStart();
         //new line:
