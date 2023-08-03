@@ -22,6 +22,12 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class Login extends Fragment {
 
@@ -30,13 +36,16 @@ public class Login extends Fragment {
     FirebaseAuth mAuth;
     ProgressBar progressBar;
     TextView textView;
+    private FirebaseDatabase db;
 
     @Override
     public void onStart() {
         super.onStart();
         mAuth = FirebaseAuth.getInstance();
+        db = FirebaseDatabase.getInstance("https://grocery-d4fbb-default-rtdb.firebaseio.com//");
         // Check if user is already signed in (non-null)
         FirebaseUser currentUser = mAuth.getCurrentUser();
+        //Check if current user is a shopper or a seller
         if(currentUser != null){
             //Intent intent = new Intent(getActivity(), LogoutActivity.class);
             //startActivity(intent);
@@ -99,12 +108,34 @@ public class Login extends Fragment {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 progressBar.setVisibility(View.GONE);
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(getActivity(), "Login Successful", Toast.LENGTH_SHORT).show();
-                                    //Intent intent = new Intent(getActivity(), LogoutActivity.class);
-                                    //startActivity(intent);
-                                    //getActivity().finish();
-                                    NavHostFragment.findNavController(Login.this)
-                                            .navigate(R.id.action_Login_to_logout);
+                                    //Get the current user:
+                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    DatabaseReference ref= db.getReference();
+                                    Query query = ref.child("Users").child("StoreOwner").orderByChild("Email").equalTo(user.getEmail());
+                                    query.addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                            if(snapshot.exists()){
+                                                //user is a seller
+                                                Toast.makeText(getActivity(), "Login Successful", Toast.LENGTH_SHORT).show();
+                                                //Intent intent = new Intent(getActivity(), LogoutActivity.class);
+                                                //startActivity(intent);
+                                                //getActivity().finish();
+                                                NavHostFragment.findNavController(Login.this)
+                                                        .navigate(R.id.action_Login_to_ProductList);
+                                            }
+                                            else{
+                                                Toast.makeText(getActivity(), "Login Successful", Toast.LENGTH_SHORT).show();
+                                                NavHostFragment.findNavController(Login.this)
+                                                        .navigate(R.id.action_Login_to_logout);
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
+
+                                        }
+                                    });
 
                                 } else {
                                     //display message if email already exists (didnt do that yet):

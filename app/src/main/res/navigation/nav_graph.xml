@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_Login_to_logout"
             app:destination="@id/logout" />
+        <action
+            android:id="@+id/action_Login_to_ProductList"
+            app:destination="@id/ProductList" />
     </fragment>
 
     <fragment
@@ -27,6 +30,9 @@
         <action
             android:id="@+id/action_WelcomeScreen_to_Login"
             app:destination="@id/Login" />
+        <action
+            android:id="@+id/action_WelcomeScreen_to_OwnerSignUp"
+            app:destination="@id/OwnerSignUp" />
 
     </fragment>
     <fragment
@@ -38,6 +44,25 @@
             android:id="@+id/action_signUp_to_Login"
             app:destination="@id/Login" />
     </fragment>
+    <fragment
+        android:id="@+id/OwnerSignUp"
+        android:name="com.example.shopeaze.OwnerSignUp"
+        android:label="activity_sign_up_owner"
+        tools:layout="@layout/activity_sign_up_owner" >
+
+        <action
+            android:id="@+id/action_OwnerSignUp_to_Login"
+            app:destination="@id/Login" />
+        <action
+            android:id="@+id/action_OwnerSignUp_to_logout"
+            app:destination="@id/logout" />
+        <action
+            android:id="@+id/action_OwnerSignUp_to_ProductList"
+            app:destination="@id/recyclerViewProducts" />
+        <action
+            android:id="@+id/action_OwnerSignUp_to_ProductList2"
+            app:destination="@id/ProductList" />
+    </fragment>
 
     <fragment
         android:id="@+id/logout"
@@ -48,6 +73,13 @@
             android:id="@+id/action_logout_to_WelcomeScreen"
             app:destination="@id/WelcomeScreen" />
     </fragment>
+
+    <fragment
+        android:id="@+id/ProductList"
+        android:name="com.example.shopeaze.ProductListFragment"
+        android:label="fragment_product_list"
+        tools:layout="@layout/fragment_product_list" />
+
 
 
 </navigation>
