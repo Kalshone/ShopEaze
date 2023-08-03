@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/Login"
         android:name="com.example.shopeaze.Login"
-        android:label="@string/Login"
+        android:label="@string/ShopperLogin"
         tools:layout="@layout/activity_login">
 
         <action

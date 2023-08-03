@@ -51,8 +51,6 @@ public class Logout extends Fragment {
             @Override
             public void onClick(View v){
                 FirebaseAuth.getInstance().signOut();
-                //Intent intent = new Intent(getActivity(), WelcomeScreen.class);
-                //startActivity(intent);
                 NavHostFragment.findNavController(Logout.this)
                         .navigate(R.id.action_logout_to_WelcomeScreen);
             }
