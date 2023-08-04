@@ -48,7 +48,7 @@ public class Login extends Fragment {       //shopper login
         //Check if current user is a shopper or a seller
         if(currentUser != null){
             NavHostFragment.findNavController(Login.this)
-                    .navigate(R.id.action_Login_to_logout);
+                    .navigate(R.id.action_Login_to_StoreList);
         }
     }
 
@@ -105,7 +105,7 @@ public class Login extends Fragment {       //shopper login
                                     //Get the current user:
                                     FirebaseUser user = mAuth.getCurrentUser();
                                     Toast.makeText(getActivity(), "Login Successful", Toast.LENGTH_SHORT).show();
-                                    NavHostFragment.findNavController(Login.this).navigate(R.id.action_Login_to_logout);
+                                    NavHostFragment.findNavController(Login.this).navigate(R.id.action_Login_to_StoreList);
                                 } else {
                                     Toast.makeText(getActivity(), "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();

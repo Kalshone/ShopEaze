@@ -36,7 +36,7 @@ public class OwnerSignUp extends Fragment {
     ProgressBar progressBar;
     private FirebaseDatabase db;
     FirebaseAuth mAuth;
-
+/*
     @Override
     public void onStart() {
         super.onStart();
@@ -51,7 +51,7 @@ public class OwnerSignUp extends Fragment {
                     .navigate(R.id.action_OwnerSignUp_to_logout);
         }
     }
-
+*/
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

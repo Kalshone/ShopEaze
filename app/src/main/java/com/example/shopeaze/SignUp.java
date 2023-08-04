@@ -39,7 +39,7 @@ public class SignUp extends Fragment {
 
     FirebaseDatabase db;
 
-
+/*
     @Override
     public void onStart() {
         super.onStart();
@@ -54,7 +54,7 @@ public class SignUp extends Fragment {
                     .navigate(R.id.action_logout_to_WelcomeScreen);
         }
     }
-
+*/
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
