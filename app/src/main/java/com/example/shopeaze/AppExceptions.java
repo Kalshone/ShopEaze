@@ -5,14 +5,19 @@ public class AppExceptions {
         public ProductNotFoundException(String message) {
             super(message);
         }
-
     }
+
     public static class StoreNameAlreadyExists extends Exception {
         public StoreNameAlreadyExists(String message) {
             super(message);
         }
     }
 
-    // add any other exceptions here
+    public static class StoreNotFoundException extends Exception {
+        public StoreNotFoundException(String message) {
+            super(message);
+        }
+    }
 
+    // add any other exceptions here
 }

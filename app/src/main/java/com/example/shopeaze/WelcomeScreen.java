@@ -43,8 +43,8 @@ public class WelcomeScreen extends Fragment {
         ownerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    NavHostFragment.findNavController(WelcomeScreen.this)
-                            .navigate(R.id.action_WelcomeScreen_to_ownerLogin);
+                NavHostFragment.findNavController(WelcomeScreen.this)
+                        .navigate(R.id.action_WelcomeScreen_to_ownerLogin);
             }
         });
     }

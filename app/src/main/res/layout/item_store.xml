@@ -1,0 +1,52 @@
+<!-- res/layout/item_store.xml -->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+    <LinearLayout
+        android:layout_width="176dp"
+        android:layout_height="60dp"
+        android:background="@drawable/store_tile_background"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="10dp">
+
+
+        <ImageView
+            android:id="@+id/imageViewStoreLogo"
+            android:layout_width="40dp"
+            android:layout_height="37dp"
+            android:layout_weight="1"
+            android:scaleType="centerCrop"
+            android:background="@drawable/rounded_corner_imageview"
+            android:clipToOutline="true"
+            android:src="@drawable/sample" />
+
+
+        <!-- Center line separator -->
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="7dp"
+            android:background="@color/turquoise" />
+
+        <!-- Right-side store name -->
+        <TextView
+            android:id="@+id/textViewStoreName"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            android:textColor="@color/light_gray"
+            android:fontFamily="@font/red_hat_display"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
+
