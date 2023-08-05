@@ -16,6 +16,7 @@ maintaining a local copy of the products for efficient access and display w/i th
  */
 
 public class ProductList {
+
     public interface OnProductsLoadedListener{
         void onProductsLoaded(List<Product> products);
     }
@@ -23,6 +24,9 @@ public class ProductList {
     private DatabaseReference databaseReference;
     public List<Product> products;
     private OnProductsLoadedListener onProductsLoadedListener;
+
+    private String storeID;
+    private DatabaseReference productsRef;
 
     public ProductList() {
         Log.d(TAG, "Creating new ProductList");
@@ -37,6 +41,11 @@ public class ProductList {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference("Users").child("StoreOwner").child(storeID).child("Products");
         products = new ArrayList<>();
+        this.storeID = storeID;
+        productsRef = FirebaseDatabase.getInstance().getReference()
+                        .child("Users")
+                .child("StoreOwner")
+                .child(storeID);
         loadProductsFromFirebase();
     }
 
@@ -62,7 +71,7 @@ public class ProductList {
         return products;
     }
 
-    private void loadProductsFromFirebase() {
+    public void loadProductsFromFirebase() {
         Log.d(TAG, "Loading products from Firebase");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override

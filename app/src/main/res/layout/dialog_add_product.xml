@@ -23,4 +23,18 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:hint="Product Price" />
+
+    <EditText
+        android:id="@+id/editTextProductQuantity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:hint="Product Quantity" />
+
+    <EditText
+        android:id="@+id/editTextProductDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:hint="Product Description" />
 </LinearLayout>

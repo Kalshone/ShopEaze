@@ -13,15 +13,15 @@
         <action
             android:id="@+id/action_Login_to_SignUp"
             app:destination="@id/signUp"   />
-        <!-- <action
+        <action
             android:id="@+id/action_Login_to_logout"
-            app:destination="@id/logout" /> -->
+            app:destination="@id/logout" />
         <action
             android:id="@+id/action_Login_to_StoreList"
             app:destination="@id/StoreList" />
-        <!-- <action
+        <action
             android:id="@+id/action_Login_to_orderFragment"
-            app:destination="@id/orderFragment" /> -->
+            app:destination="@id/orderFragment" />
     </fragment>
 
     <fragment
@@ -38,7 +38,7 @@
             app:destination="@id/OwnerSignUp" />
 
         <action
-        android:id="@+id/action_WelcomeScreen_to_ownerLogin"
+            android:id="@+id/action_WelcomeScreen_to_ownerLogin"
             app:destination="@id/ownerLogin" />
 
     </fragment>
@@ -63,12 +63,12 @@
         <action
             android:id="@+id/action_OwnerSignUp_to_ownerLogin"
             app:destination="@id/ownerLogin" />
-        <!-- <action
+        <action
             android:id="@+id/action_OwnerSignUp_to_logout"
-            app:destination="@id/logout" /> -->
-        <!-- <action
+            app:destination="@id/logout" />
+        <action
             android:id="@+id/action_OwnerSignUp_to_ProductList"
-            app:destination="@id/recyclerViewProducts" /> -->
+            app:destination="@id/recyclerViewProducts" />
         <action
             android:id="@+id/action_OwnerSignUp_to_ProductList2"
             app:destination="@id/ProductList" />
@@ -148,9 +148,9 @@
         <action
             android:id="@+id/action_ownerLogin_to_OwnerSignUp"
             app:destination="@id/OwnerSignUp" />
-        <!-- <action
+        <action
             android:id="@+id/action_ownerLogin_to_logout"
-            app:destination="@id/logout" /> -->
+            app:destination="@id/logout" />
         <action
             android:id="@+id/action_ownerLogin_to_ProductList"
             app:destination="@id/ProductList" />

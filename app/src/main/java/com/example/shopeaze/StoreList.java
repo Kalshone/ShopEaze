@@ -69,7 +69,7 @@ public class StoreList {
             }
         });
 
-}
+    }
 
     public Store getStoreByID(String storeID) throws AppExceptions.StoreNotFoundException {
         for (Store store : stores) {

@@ -5,8 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class ProductDetailsFragment extends Fragment {
     private static final String ARG_PRODUCT_ID = "product_id";
@@ -27,14 +30,20 @@ public class ProductDetailsFragment extends Fragment {
         TextView textViewProductBrand = rootView.findViewById(R.id.textViewProductBrand);
         TextView textViewProductPrice = rootView.findViewById(R.id.textViewProductPrice);
 
-        String productID = getArguments().getString(ARG_PRODUCT_ID);
-        Product product = getProductDetails(productID);
+        String productID = getArguments() != null ? getArguments().getString(ARG_PRODUCT_ID) : null;
+        if (productID != null) {
+            Product product = getProductDetails(productID);
 
-        if (product != null) {
-            textViewProductName.setText(product.getName());
-            textViewProductBrand.setText(product.getBrand());
-            textViewProductPrice.setText(String.valueOf(product.getPrice()));
-            // Set other TextViews with respective product details
+            if (product != null) {
+                textViewProductName.setText(product.getName());
+                textViewProductBrand.setText(product.getBrand());
+                textViewProductPrice.setText(String.valueOf(product.getPrice()));
+                // Set other TextViews with respective product details
+            } else {
+                showErrorMessage("Product not found");
+            }
+        } else {
+            showErrorMessage("Product ID is null");
         }
 
         return rootView;
@@ -49,4 +58,9 @@ public class ProductDetailsFragment extends Fragment {
             return null;
         }
     }
+
+    private void showErrorMessage(String message) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
+    }
 }
+

@@ -67,4 +67,13 @@ public class FragmentStoreList extends Fragment implements StoreAdapter.OnItemCl
         navController.navigate(R.id.action_StoreList_to_ProductsOffered, bundle);
     }
 
+    /*private void openProductsOfferedFragment(String storeID) {
+        Log.d("FragmentStoreList", "Trying to open ProductsOfferedFragment for " + storeID + " store");
+        ProductsOfferedFragment fragment = ProductsOfferedFragment.newInstance(storeID);
+        Log.d("FragmentStoreList", "Trying to open ProductsOfferedFragment for " + storeID + " store");
+        requireActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, fragment)
+                .addToBackStack(null)
+                .commit();
+    }*/
 }
