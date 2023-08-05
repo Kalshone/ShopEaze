@@ -1,7 +1,8 @@
 package com.example.shopeaze;
 
+import java.io.Serializable;
 import java.util.UUID;
-public class Product {
+public class Product implements Serializable {
     // Fields
     private String productID;
     private String productName;

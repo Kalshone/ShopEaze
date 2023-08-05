@@ -99,11 +99,21 @@
             android:id="@+id/action_ProductsOffered_to_logout"
             app:destination="@id/logout" />
         <action
-            android:id="@+id/action_OwnerSignUp_to_ProductList"
-            app:destination="@id/recyclerViewProducts" />
+            android:id="@+id/action_ProductsOffered_to_ProductDetails"
+            app:destination="@id/ShopperProductDetails" />
         <action
-            android:id="@+id/action_OwnerSignUp_to_ProductList2"
+            android:id="@+id/action_OwnerSignUp_to_ProductList"
             app:destination="@id/ProductList" />
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/ShopperProductDetails"
+        android:name="com.example.shopeaze.ShopperProductDetailsFragment"
+        android:label="Product Details"
+        tools:layout="@layout/activity_shopper_product_details">
+
 
     </fragment>
 

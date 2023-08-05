@@ -2,10 +2,11 @@ package com.example.shopeaze;
 
 import android.util.Log;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.UUID;
 
-public class Store {
+public class Store implements Serializable {
 
     private String storeId;
     private String StoreName;

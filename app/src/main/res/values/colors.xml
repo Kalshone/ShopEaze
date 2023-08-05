@@ -8,5 +8,6 @@
     <color name="light_gray">#F5F9FF</color>
     <color name="navy_blue">#0C1618</color>
     <color name="orange">#EF8354</color>
+    <color name="gray">#4DFFFFFF</color>
 </resources>
 

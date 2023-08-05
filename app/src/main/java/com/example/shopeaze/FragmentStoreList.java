@@ -1,4 +1,3 @@
-// FragmentStoreList.java
 package com.example.shopeaze;
 
 import android.os.Bundle;
@@ -12,7 +11,6 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -64,7 +62,7 @@ public class FragmentStoreList extends Fragment implements StoreAdapter.OnItemCl
             Log.d("FragmentStoreList", "FragmentStoreList StoreID is" + store.getStoreID());
         }
         Bundle bundle = new Bundle();
-        bundle.putString("store_id", store.getStoreID());
+        bundle.putSerializable("store", store);
         NavController navController = NavHostFragment.findNavController(this);
         navController.navigate(R.id.action_StoreList_to_ProductsOffered, bundle);
     }
