@@ -1,5 +1,7 @@
 package com.example.shopeaze;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -29,6 +31,7 @@ public class Store {
 
     // getters
     public String getStoreID() {
+        //Log.d("Store class", "Just returned storeId to be" + storeId);
         return storeId;
     }
 
@@ -47,6 +50,7 @@ public class Store {
 
     // setters
     public void setStoreID(String id) {
+        //Log.d("Store class", "Just set storeId to be" + id);
         this.storeId = id;
     }
 

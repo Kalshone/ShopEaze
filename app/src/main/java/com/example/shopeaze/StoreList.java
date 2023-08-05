@@ -1,4 +1,6 @@
+
 // StoreList.java
+
 package com.example.shopeaze;
 
 import android.util.Log;
@@ -18,6 +20,7 @@ public class StoreList {
         void onStoresLoaded(List<Store> stores);
     }
 
+    private static final String TAG = "StoreList";
     private DatabaseReference databaseReference;
     private List<Store> stores;
     private OnStoresLoadedListener onStoresLoadedListener;
@@ -41,10 +44,17 @@ public class StoreList {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+
+                Log.d("StoreList", "onDataChange called"); // Add this log statement
                 stores.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Store store = snapshot.getValue(Store.class);
-                    stores.add(store);
+                    if (store != null) {
+                        String storeId = snapshot.getKey();
+                        store.setStoreID(storeId);
+                        stores.add(store);
+                    }
+
                 }
                 Log.d("StoreList", "Loaded " + stores.size() + " stores from Firebase");
                 if (onStoresLoadedListener != null) {
@@ -54,19 +64,24 @@ public class StoreList {
 
             @Override
             public void onCancelled(DatabaseError error) {
+                Log.d("StoreList", "onCancelled called with error: " + error.getMessage()); // Add this log statement
                 System.err.println("Error loading stores from Firebase: " + error.getMessage());
             }
         });
-    }
+
+}
 
     public Store getStoreByID(String storeID) throws AppExceptions.StoreNotFoundException {
         for (Store store : stores) {
+            Log.d("StoreList", "Now comparing" + storeID + " with store ID " + store.getStoreID());
             if (store.getStoreID().equals(storeID)) {
+                Log.d("StoreList", "Found the store with ID " + storeID);
                 return store;
             }
         }
 
         // if the store is not found
+        Log.d("StoreList", "Did not find the store with ID " + storeID);
         throw new AppExceptions.StoreNotFoundException("Store with ID " + storeID + " not found.");
     }
 }
