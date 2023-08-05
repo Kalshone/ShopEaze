@@ -7,12 +7,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ProductDetailsFragment extends Fragment {
     private static final String ARG_PRODUCT_ID = "product_id";
+
+    private String productID;
 
     public static ProductDetailsFragment newInstance(String productID) {
         ProductDetailsFragment fragment = new ProductDetailsFragment();
@@ -23,7 +26,16 @@ public class ProductDetailsFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public void onCreate(@NonNull Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            productID = getArguments().getString(ARG_PRODUCT_ID);
+        }
+    }
+
+    @NonNull
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_product_details, container, false);
 
         TextView textViewProductName = rootView.findViewById(R.id.textViewProductName);

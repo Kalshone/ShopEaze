@@ -22,6 +22,10 @@ public class AddProductDialog extends DialogFragment {
 
     private OnProductAddedListener onProductAddedListener;
 
+    public void setOnProductAddedListener(OnProductAddedListener onProductAddedListener) {
+        this.onProductAddedListener = onProductAddedListener;
+    }
+
     public static AddProductDialog newInstance(ProductListFragment productListFragment) {
         AddProductDialog dialog = new AddProductDialog();
         dialog.setTargetFragment(productListFragment, 0);
