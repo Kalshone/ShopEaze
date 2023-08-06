@@ -4,7 +4,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <EditText
         android:id="@+id/editTextNewPrice"
@@ -12,6 +13,12 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:hint="Enter new price"
-        android:padding="8dp" />
+        android:padding="8dp"
+        android:background="@drawable/gradient_button"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:gravity="top"
+        android:layout_marginBottom="16dp" />
 
 </LinearLayout>

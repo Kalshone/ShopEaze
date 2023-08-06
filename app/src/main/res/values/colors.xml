@@ -11,7 +11,9 @@
     <color name="orange">#EF8354</color>
     <color name="gray">#4DFFFFFF</color>
     <color name="secondary_gray">#C7F5F9FF</color>
-
+    <color name="light_blue">#ADD8E6</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="darker_transparent_cardview_color">#B3000000</color>
 </resources>
 
 

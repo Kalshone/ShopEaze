@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- fragment_product_list.xml -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/gradient_with_image">
+    android:background="@drawable/vector1_background">
 
     <TextView
         android:id="@+id/textViewStoreName"
@@ -12,9 +11,11 @@
         android:layout_height="wrap_content"
         android:textSize="24sp"
         android:layout_centerHorizontal="true"
-        android:paddingTop="16dp"
-        android:paddingBottom="16dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="12dp"
         android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:textAllCaps="true"
         android:layout_alignParentTop="true" />
 
     <!-- Add the Refresh button -->
@@ -22,13 +23,12 @@
 
     <ImageButton
         android:id="@+id/btnRefresh"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="18dp"
-        android:background="@null"
+        android:layout_margin="16dp"
+        android:background="@drawable/gradient_button"
         android:src="@drawable/refresh" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -41,14 +41,16 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <ImageButton
         android:id="@+id/fabAddProduct"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
         android:layout_margin="16dp"
-        android:src="@drawable/ic_add" />
+        android:background="@drawable/gradient_button"
+        android:src="@drawable/add_btn" />
+
 
     <FrameLayout
         android:id="@+id/fragment_container"

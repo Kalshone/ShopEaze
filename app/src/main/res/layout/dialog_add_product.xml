@@ -3,38 +3,50 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@color/darker_transparent_cardview_color">
 
     <EditText
         android:id="@+id/editTextProductName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Product Name" />
+        android:hint="Product Name"
+        android:textColor="@color/white"
+        style="@style/AppTheme"/>
 
     <EditText
         android:id="@+id/editTextProductBrand"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Product Brand" />
+        android:hint="Product Brand"
+        android:textColor="@color/white"
+        style="@style/AppTheme"/>
 
     <EditText
         android:id="@+id/editTextProductPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
-        android:hint="Product Price" />
+        android:hint="Product Price"
+        android:textColor="@color/white"
+        style="@style/AppTheme"/>
 
     <EditText
         android:id="@+id/editTextProductQuantity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="number"
-        android:hint="Product Quantity" />
+        android:hint="Product Quantity"
+        android:textColor="@color/white"
+        style="@style/AppTheme"/>
 
     <EditText
         android:id="@+id/editTextProductDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
-        android:hint="Product Description" />
+        android:hint="Product Description"
+        android:textColor="@color/white"
+        style="@style/AppTheme"/>
+
 </LinearLayout>

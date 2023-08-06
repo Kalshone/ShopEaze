@@ -6,7 +6,10 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
@@ -104,18 +107,27 @@ public class AddProductDialog extends DialogFragment {
                     public void onClick(DialogInterface dialog, int which) {
                         String productName = editTextProductName.getText().toString().trim();
                         String productBrand = editTextProductBrand.getText().toString().trim();
-                        double productPrice = Double.parseDouble(editTextProductPrice.getText().toString().trim());
-                        String productDescription = editTextProductDescription.getText().toString().trim();
-                        int productQuantity = Integer.parseInt(editTextProductQuantity.getText().toString().trim());
+                        // Check if productName and productBrand are empty
+                        if (productName.isEmpty() || productBrand.isEmpty()) {
+                            new AlertDialog.Builder(getActivity())
+                                    .setTitle("Uh oh!")
+                                    .setMessage("Product name and brand cannot be empty.")
+                                    .setPositiveButton("OK", null)
+                                    .show();
+                        } else {
+                            double productPrice = Double.parseDouble(editTextProductPrice.getText().toString().trim());
+                            String productDescription = editTextProductDescription.getText().toString().trim();
+                            int productQuantity = Integer.parseInt(editTextProductQuantity.getText().toString().trim());
 
-                        Product newProduct = new Product();
-                        newProduct.setName(productName);
-                        newProduct.setBrand(productBrand);
-                        newProduct.setPrice(productPrice);
-                        newProduct.setDescription(productDescription);
-                        newProduct.setQuantity(productQuantity);
+                            Product newProduct = new Product();
+                            newProduct.setName(productName);
+                            newProduct.setBrand(productBrand);
+                            newProduct.setPrice(productPrice);
+                            newProduct.setDescription(productDescription);
+                            newProduct.setQuantity(productQuantity);
 
-                        checkProductExistence(newProduct);
+                            checkProductExistence(newProduct);
+                        }
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

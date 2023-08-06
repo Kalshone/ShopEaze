@@ -5,6 +5,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,7 +38,7 @@ public class ProductListFragment extends Fragment implements AddProductDialog.On
     private ProductAdapter productAdapter;
     private DatabaseReference productsRef;
     private TextView textViewStoreName;
-
+    private View view;
     @Override
     public void onProductAdded(Product product) {
         if (!products.contains(product)) {
@@ -50,7 +52,7 @@ public class ProductListFragment extends Fragment implements AddProductDialog.On
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_product_list, container, false);
+        view = inflater.inflate(R.layout.fragment_product_list, container, false);
 
         textViewStoreName = view.findViewById(R.id.textViewStoreName);
 
@@ -114,7 +116,7 @@ public class ProductListFragment extends Fragment implements AddProductDialog.On
             }
         });
 
-        FloatingActionButton fabAddProduct = view.findViewById(R.id.fabAddProduct);
+        ImageButton fabAddProduct = view.findViewById(R.id.fabAddProduct);
         fabAddProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -182,10 +184,14 @@ public class ProductListFragment extends Fragment implements AddProductDialog.On
     }
 
     private void refreshProducts() {
-        // Clear the existing products list
+
+        Animation rotationAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.rotate);
+        ImageButton btnRefresh = view.findViewById(R.id.btnRefresh);
+        btnRefresh.startAnimation(rotationAnimation);
+
+
         products.clear();
         productAdapter.notifyDataSetChanged();
-        // Fetch the products again from the Firebase database
         productsRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
