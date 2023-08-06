@@ -8,16 +8,10 @@
     android:layout_height="match_parent"
     tools:context=".Logout">
 
-    <TextView
-        android:id="@+id/user_details"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello User!" />
-
-    <Button
-        android:text="@string/log_out"
+    <ImageButton
         android:id="@+id/logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"   />
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/logout_button" />
 
 </LinearLayout>
