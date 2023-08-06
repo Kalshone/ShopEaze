@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -46,6 +47,16 @@ public class ProductsOfferedFragment extends Fragment implements ProductsOffered
 
         TextView textViewStoreName = rootView.findViewById(R.id.textViewStoreName);
         textViewStoreName.setText(store.getStoreName());
+
+        Button backToStoresButton = rootView.findViewById(R.id.buttonBackToStores);
+        backToStoresButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(ProductsOfferedFragment.this).popBackStack();
+                //NavHostFragment.findNavController(ShopperProductDetailsFragment.this)
+                //         .navigate(R.id.action_ShopperProductDetails_to_ProductsOffered);
+            }
+        });
 
         storeList = new StoreList();
         storeList.setOnStoresLoadedListener(this);

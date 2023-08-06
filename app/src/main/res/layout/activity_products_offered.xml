@@ -6,13 +6,29 @@
     android:background="@drawable/vector3_background"
     android:paddingHorizontal="10dp">
 
+        <Button
+            android:id="@+id/buttonBackToStores"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:text="Back to Stores"
+            android:textColor="@color/navy_blue"
+            android:textSize="11sp"
+            android:fontFamily="@font/red_hat_display"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="10dp"
+            android:backgroundTint="@color/secondary_gray"
+            android:background="@drawable/rounded_button"
+            android:clipToOutline="true"/>
+
         <include
             layout="@layout/item_store"
             android:id="@+id/storeNameCard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="30dp"
             android:layout_marginBottom="5dp"/>
 
         <androidx.recyclerview.widget.RecyclerView

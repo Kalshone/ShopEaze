@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -33,6 +34,7 @@ public class FragmentStoreList extends Fragment implements StoreAdapter.OnItemCl
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         View rootView = inflater.inflate(R.layout.activity_store_list, container, false);
 
         final RecyclerView recyclerViewStores = rootView.findViewById(R.id.recyclerViewStores);
@@ -50,7 +52,7 @@ public class FragmentStoreList extends Fragment implements StoreAdapter.OnItemCl
         });
 
         // TEMPORARY FOR TESTING PURPOSES
-        /*Button logoutButton = rootView.findViewById(R.id.buttonLogout);
+        Button logoutButton = rootView.findViewById(R.id.logoutButton);
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,7 +60,7 @@ public class FragmentStoreList extends Fragment implements StoreAdapter.OnItemCl
                 NavController navController = NavHostFragment.findNavController(FragmentStoreList.this);
                 navController.navigate(R.id.action_StoreList_to_logout);
             }
-        });*/
+        });
 
         ImageButton storesButton = rootView.findViewById(R.id.button_stores);
         storesButton.setOnClickListener(new View.OnClickListener() {

@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:layout_marginLeft="25dp"
+        android:layout_marginLeft="17dp"
         android:text="Welcome to"
         android:textColor="@color/white"
         android:textSize="20sp"
@@ -29,7 +29,7 @@
             android:id="@+id/textviewShop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
+            android:layout_marginLeft="17dp"
             android:text="Shop"
             android:textColor="@color/white"
             android:textSize="32sp"
@@ -41,6 +41,7 @@
             android:layout_height="wrap_content"
             android:text="EAZE"
             android:textColor="@color/turquoise"
+            android:layout_marginLeft="2dp"
             android:textSize="32sp"
             android:textStyle="bold"
             android:fontFamily="@font/red_hat_display"/>
@@ -53,7 +54,7 @@
         android:textStyle="bold"
         android:textColor="@color/secondary_gray"
         android:fontFamily="@font/red_hat_display"
-        android:layout_marginLeft="25dp"
+        android:layout_marginLeft="17dp"
         android:layout_marginTop="87dp"
         android:layout_marginBottom="20dp"
         android:layout_width="wrap_content"
@@ -71,6 +72,7 @@
             android:fontFamily="@font/red_hat_display"
             android:hint="@string/Email"
             android:textColorHint="@color/gray"
+            android:textColor="@color/secondary_gray"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -82,6 +84,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="353dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/gray"
         app:boxStrokeColor="@color/primary_blue"
         android:layout_gravity="center_horizontal"
         android:textColorHint="@color/gray"
@@ -91,7 +94,8 @@
             android:id="@+id/password"
             android:hint="@string/Password"
             android:fontFamily="@font/red_hat_display"
-            android:textColorHint="@color/light_gray"
+            android:textColorHint="@color/gray"
+            android:textColor="@color/secondary_gray"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 

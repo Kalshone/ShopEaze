@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
@@ -22,6 +23,7 @@ public class WelcomeScreen extends Fragment {
             Bundle savedInstanceState
     ) {
 
+        getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         binding = FragmentWelcomeBinding.inflate(inflater, container, false);
         return binding.getRoot();
 

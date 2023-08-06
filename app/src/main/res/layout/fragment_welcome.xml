@@ -53,8 +53,11 @@
         android:backgroundTint="@color/turquoise"
         android:textColor="@color/navy_blue"
         android:layout_gravity="center_horizontal"
+        android:background="@drawable/rounded_button"
+        android:clipToOutline="true"
         android:text="I'm a Shopper"
         android:textSize="18sp"
+        android:textAllCaps="false"
         android:fontFamily="@font/red_hat_display"
         android:textStyle="bold" />
 
@@ -65,11 +68,14 @@
         android:layout_height="60dp"
         android:layout_marginTop="24dp"
         android:backgroundTint="@color/primary_blue"
+        android:background="@drawable/rounded_button"
+        android:clipToOutline="true"
         android:textColor="@color/navy_blue"
         android:layout_gravity="center_horizontal"
         android:textSize="18sp"
         android:fontFamily="@font/red_hat_display"
         android:textStyle="bold"
+        android:textAllCaps="false"
         android:text="I'm a Store Owner"/>
 
 

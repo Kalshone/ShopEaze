@@ -6,16 +6,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,17 +24,17 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class ShopperProductDetailsFragment extends Fragment {
-    private static final String ARG_STORE_ID = "store_id";
+    private static final String ARG_STORE = "store";
     private static final String ARG_PRODUCT = "product";
     private Product product;
-
-    Button addToCartButton;         //new
+    private Store store;
+    ImageButton addToCartButton;         //new
     private static final String TAG = "ShopperProductDetails";  //new
 
-    public static ShopperProductDetailsFragment newInstance(String storeID, Product product) {
+    public static ShopperProductDetailsFragment newInstance(Store store, Product product) {
         ShopperProductDetailsFragment fragment = new ShopperProductDetailsFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_STORE_ID, storeID);
+        args.putSerializable(ARG_STORE, store);
         args.putSerializable(ARG_PRODUCT, product);
         fragment.setArguments(args);
         return fragment;
@@ -44,8 +45,22 @@ public class ShopperProductDetailsFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.activity_shopper_product_details, container, false);
 
         // Retrieve storeID and product from arguments
-        String storeID = getArguments().getString(ARG_STORE_ID);
+        store = (Store) getArguments().getSerializable(ARG_STORE);
         product = (Product) getArguments().getSerializable(ARG_PRODUCT);
+
+        Button backToProductsButton = rootView.findViewById(R.id.buttonBackToProducts);
+        backToProductsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(ShopperProductDetailsFragment.this).popBackStack();
+                //NavHostFragment.findNavController(ShopperProductDetailsFragment.this)
+               //         .navigate(R.id.action_ShopperProductDetails_to_ProductsOffered);
+            }
+        });
+
+        // Display store card at top
+        TextView textViewStoreName = rootView.findViewById(R.id.textViewStoreName);
+        textViewStoreName.setText(store.getStoreName());
 
         // Display product details
         TextView productNameTextView = rootView.findViewById(R.id.textViewProductName);
@@ -59,7 +74,7 @@ public class ShopperProductDetailsFragment extends Fragment {
 
         TextView productDescriptionTextView = rootView.findViewById(R.id.textViewProductDescription);
         productDescriptionTextView.setText(product.getDescription());
-//new:
+
         addToCartButton = rootView.findViewById(R.id.buttonAddToCart);
         addToCartButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,11 +82,10 @@ public class ShopperProductDetailsFragment extends Fragment {
                 addToCart(product);
             }
         });
-//new ends^^
+
         return rootView;
     }
 
-//new:
     private void addToCart(Product product) {
         CartItem cartItem = new CartItem(product);
         String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -109,6 +123,7 @@ public class ShopperProductDetailsFragment extends Fragment {
                             });
                 }
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 // Handle any errors that might occur during the query
