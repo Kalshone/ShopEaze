@@ -115,10 +115,23 @@ public class AddProductDialog extends DialogFragment {
                                     .setPositiveButton("OK", null)
                                     .show();
                         } else {
-                            double productPrice = Double.parseDouble(editTextProductPrice.getText().toString().trim());
-                            String productDescription = editTextProductDescription.getText().toString().trim();
-                            int productQuantity = Integer.parseInt(editTextProductQuantity.getText().toString().trim());
+                            double productPrice = 0.0;
+                            String productPriceStr = editTextProductPrice.getText().toString().trim();
+                            if (!productPriceStr.isEmpty()) {
+                                productPrice = Double.parseDouble(productPriceStr);
+                            }
 
+                            String productDescription = "Default description";
+                            String enteredDescription = editTextProductDescription.getText().toString().trim();
+                            if (!enteredDescription.isEmpty()) {
+                                productDescription = enteredDescription;
+                            }
+
+                            int productQuantity = 1;
+                            String productQuantityStr = editTextProductQuantity.getText().toString().trim();
+                            if (!productQuantityStr.isEmpty()) {
+                                productQuantity = Integer.parseInt(productQuantityStr);
+                            }
                             Product newProduct = new Product();
                             newProduct.setName(productName);
                             newProduct.setBrand(productBrand);
