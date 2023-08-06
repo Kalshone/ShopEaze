@@ -8,11 +8,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class AddProductDialog extends DialogFragment {
 
@@ -26,11 +30,59 @@ public class AddProductDialog extends DialogFragment {
         this.onProductAddedListener = onProductAddedListener;
     }
 
-    public static AddProductDialog newInstance(ProductListFragment productListFragment) {
-        AddProductDialog dialog = new AddProductDialog();
-        dialog.setTargetFragment(productListFragment, 0);
-        return dialog;
+    private void addProduct(final Product newProduct) {
+        String currentUserUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("Users");
+        DatabaseReference storeOwnerRef = usersRef.child("StoreOwner").child(currentUserUid);
+        storeOwnerRef.child("Products").push().setValue(newProduct);
+
+        if (onProductAddedListener != null) {
+            onProductAddedListener.onProductAdded(newProduct);
+        }
     }
+
+    private void checkProductExistence(final Product newProduct) {
+        String currentUserUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference()
+                .child("Users")
+                .child("StoreOwner")
+                .child(currentUserUid)
+                .child("Products");
+
+        productsRef.orderByChild("name")
+                .equalTo(newProduct.getName())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        boolean productExists = false;
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            Product product = snapshot.getValue(Product.class);
+                            if (product != null && product.getBrand().equals(newProduct.getBrand())) {
+                                productExists = true;
+                                break;
+                            }
+                        }
+
+                        if (productExists) {
+                            new AlertDialog.Builder(getActivity())
+                                    .setTitle("Product Exists")
+                                    .setMessage("The product with the same name and brand already exists.")
+                                    .setPositiveButton("OK", null)
+                                    .show();
+                        } else {
+                            addProduct(newProduct);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        // Handle the error if the query is canceled
+                    }
+                });
+
+
+    }
+
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -50,14 +102,12 @@ public class AddProductDialog extends DialogFragment {
                 .setPositiveButton("Add", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // Get the entered product information
                         String productName = editTextProductName.getText().toString().trim();
                         String productBrand = editTextProductBrand.getText().toString().trim();
                         double productPrice = Double.parseDouble(editTextProductPrice.getText().toString().trim());
                         String productDescription = editTextProductDescription.getText().toString().trim();
                         int productQuantity = Integer.parseInt(editTextProductQuantity.getText().toString().trim());
 
-                        // Create a new product object
                         Product newProduct = new Product();
                         newProduct.setName(productName);
                         newProduct.setBrand(productBrand);
@@ -65,22 +115,7 @@ public class AddProductDialog extends DialogFragment {
                         newProduct.setDescription(productDescription);
                         newProduct.setQuantity(productQuantity);
 
-                        // Get the current user's UID
-                        String currentUserUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-                        // Get the reference to the "Users" node in the Firebase database
-                        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("Users");
-
-                        // Get the reference to the "StoreOwner" node under the current user's UID
-                        DatabaseReference storeOwnerRef = usersRef.child("StoreOwner").child(currentUserUid);
-
-                        // Add the product under the "StoreOwner" node
-                        storeOwnerRef.child("Products").push().setValue(newProduct);
-
-                        if (onProductAddedListener != null) {
-                            onProductAddedListener.onProductAdded(newProduct);
-                        }
-
+                        checkProductExistence(newProduct);
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -92,4 +127,5 @@ public class AddProductDialog extends DialogFragment {
 
         return builder.create();
     }
+
 }

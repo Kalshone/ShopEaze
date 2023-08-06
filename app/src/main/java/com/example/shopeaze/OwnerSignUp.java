@@ -121,7 +121,6 @@ public class OwnerSignUp extends Fragment {
                             Toast.makeText(getActivity(), "Store name already exists", Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
                             //throw new AppExceptions.StoreNameAlreadyExistsException("Store name already exists");
-                            return;
                         }
 
                         mAuth.createUserWithEmailAndPassword(email, password)

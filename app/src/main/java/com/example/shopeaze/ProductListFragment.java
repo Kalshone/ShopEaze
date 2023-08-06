@@ -1,6 +1,5 @@
 package com.example.shopeaze;
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,6 +12,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,20 +28,23 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class ProductListFragment extends Fragment implements AddProductDialog.OnProductAddedListener{
+public class ProductListFragment extends Fragment implements AddProductDialog.OnProductAddedListener,
+        ProductAdapter.OnProductClickListener {
+
     private RecyclerView recyclerView;
     private ArrayList<Product> products;
     private ProductAdapter productAdapter;
     private DatabaseReference productsRef;
-    private ProgressDialog progressDialog;
     private TextView textViewStoreName;
-    private boolean productsFetched = false;
 
     @Override
     public void onProductAdded(Product product) {
-        // Add the new product to the list and notify the adapter of the change
-        products.add(product);
-        productAdapter.notifyDataSetChanged();
+        if (!products.contains(product)) {
+            products.add(product);
+            productAdapter.notifyDataSetChanged();
+        } else {
+            showToast("Product already exists");
+        }
     }
 
     @Nullable
@@ -50,17 +54,12 @@ public class ProductListFragment extends Fragment implements AddProductDialog.On
 
         textViewStoreName = view.findViewById(R.id.textViewStoreName);
 
-        progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setCancelable(false);
-        progressDialog.setMessage("Fetching Products...");
-        progressDialog.show();
-
         recyclerView = view.findViewById(R.id.recyclerViewProducts);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         products = new ArrayList<>();
-        productAdapter = new ProductAdapter(getActivity(), products);
+        productAdapter = new ProductAdapter(getActivity(), products, this);
 
         fetchStoreName();
 
@@ -71,62 +70,46 @@ public class ProductListFragment extends Fragment implements AddProductDialog.On
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                 .child("Products");
 
-
-        productsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        productsRef.addChildEventListener(new ChildEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    // If products exist and haven't been fetched before, add the child event listener to fetch them
-                    if (!productsFetched) {
-                        productsFetched = true; // Mark that products have been fetched once
-                        productsRef.addChildEventListener(new ChildEventListener() {
-                            @Override
-                            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String previousChildName) {
-                                Product product = dataSnapshot.getValue(Product.class);
-                                products.add(product);
-                                productAdapter.notifyDataSetChanged();
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String previousChildName) {
+                Product product = dataSnapshot.getValue(Product.class);
+                if (!isProductDuplicate(product)) {
+                    products.add(product);
+                    productAdapter.notifyDataSetChanged();
+                }
+            }
 
-                                if (progressDialog.isShowing())
-                                    progressDialog.dismiss();
-                            }
-
-                            @Override
-                            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String previousChildName) {
-                                // Handle changes to existing children if needed
-                            }
-
-                            @Override
-                            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-                                // Handle removed children if needed
-                            }
-
-                            @Override
-                            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String previousChildName) {
-                                // Handle moved children if needed
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError databaseError) {
-                                if (progressDialog.isShowing())
-                                    progressDialog.dismiss();
-                                Log.w("TAG", "Listen failed.", databaseError.toException());
-                            }
-                        });
+            private boolean isProductDuplicate(Product newProduct) {
+                for (Product product : products) {
+                    if (product.getName().equals(newProduct.getName()) && product.getBrand().equals(newProduct.getBrand())) {
+                        return true;
                     }
-                } else {
-                    // If no products found, dismiss the progressDialog and display a message
-                    if (progressDialog.isShowing()) {
-                        progressDialog.dismiss();
-                    }
-                    showToast("No products found");
+                }
+                return false;
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String previousChildName) {
+                // Handle changes to existing children if needed
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                Product removedProduct = dataSnapshot.getValue(Product.class);
+                if (removedProduct != null) {
+                    products.remove(removedProduct);
+                    productAdapter.notifyDataSetChanged();
                 }
             }
 
             @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String previousChildName) {
+                // Handle moved children if needed
+            }
+
+            @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                if (progressDialog.isShowing()) {
-                    progressDialog.dismiss();
-                }
                 Log.w("TAG", "Listen failed.", databaseError.toException());
             }
         });
@@ -150,16 +133,20 @@ public class ProductListFragment extends Fragment implements AddProductDialog.On
         return view;
     }
 
-    private void openStoreProductDetailsFragment(String productID) {
-        ProductDetailsFragment fragment = ProductDetailsFragment.newInstance(productID);
-        requireActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, fragment)
-                .addToBackStack(null)
-                .commit();
+    @Override
+    public void onItemClick(Product product) {
+        openProductDetailsFragment(product);
+    }
+
+    private void openProductDetailsFragment(Product product) {
+        NavController navController = NavHostFragment.findNavController(this);
+        navController.navigate(
+                R.id.action_product_list_to_product_details,
+                ProductDetailsFragment.newInstance(product).getArguments()
+        );
     }
 
     private void showAddProductDialog() {
-        // Create and show a dialog to gather product information from the user
         AddProductDialog dialog = new AddProductDialog();
         dialog.setOnProductAddedListener(this);
         dialog.show(requireActivity().getSupportFragmentManager(), "AddProductDialog");
@@ -195,44 +182,33 @@ public class ProductListFragment extends Fragment implements AddProductDialog.On
     }
 
     private void refreshProducts() {
-        // Clear the existing products list and show the progress dialog
+        // Clear the existing products list
         products.clear();
         productAdapter.notifyDataSetChanged();
-        progressDialog.show();
-
-        // Attach the child event listener again to fetch the products
-        productsRef.addChildEventListener(new ChildEventListener() {
+        // Fetch the products again from the Firebase database
+        productsRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String previousChildName) {
-                Product product = dataSnapshot.getValue(Product.class);
-                products.add(product);
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot productSnapshot : dataSnapshot.getChildren()) {
+                    Product product = productSnapshot.getValue(Product.class);
+                    if (!products.contains(product)) {
+                        products.add(product);
+                    }
+                }
                 productAdapter.notifyDataSetChanged();
-
-                if (progressDialog.isShowing())
-                    progressDialog.dismiss();
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String previousChildName) {
-                // Handle changes to existing children if needed
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-                // Handle removed children if needed
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String previousChildName) {
-                // Handle moved children if needed
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                if (progressDialog.isShowing())
-                    progressDialog.dismiss();
-                Log.w("TAG", "Listen failed.", databaseError.toException());
+                Log.w("TAG", "Refresh failed.", databaseError.toException());
+                showToast("Failed to refresh products.");
             }
         });
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
 }
+
