@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
@@ -42,6 +43,10 @@ public class ProductsOfferedFragment extends Fragment implements ProductsOffered
 
         Store store = (Store) getArguments().getSerializable(ARG_STORE);
         Log.d(TAG, "Store: " + store.getStoreName());
+
+        TextView textViewStoreName = rootView.findViewById(R.id.textViewStoreName);
+        textViewStoreName.setText(store.getStoreName());
+
         storeList = new StoreList();
         storeList.setOnStoresLoadedListener(this);
 

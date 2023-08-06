@@ -10,6 +10,7 @@
         android:layout_width="176dp"
         android:layout_height="60dp"
         android:background="@drawable/store_tile_background"
+        android:clipToOutline="true"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingVertical="10dp"

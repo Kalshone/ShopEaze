@@ -7,7 +7,11 @@
     <color name="turquoise">#81D2C7</color>
     <color name="light_gray">#F5F9FF</color>
     <color name="navy_blue">#0C1618</color>
+    <color name="navy_blue_80">#0C161830</color>
     <color name="orange">#EF8354</color>
     <color name="gray">#4DFFFFFF</color>
+    <color name="secondary_gray">#C7F5F9FF</color>
+
 </resources>
+
 

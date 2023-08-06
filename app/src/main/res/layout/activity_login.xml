@@ -4,25 +4,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
+    android:background="@drawable/gradient_with_image"
     android:layout_height="match_parent"
-    android:padding="15dp"
+    android:padding="16dp"
     tools:context=".Login">
 
     <TextView
-        android:text="@string/login"
-        android:textSize="30sp"
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="25dp"
+        android:text="Welcome to"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:fontFamily="@font/red_hat_display"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textviewShop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:text="Shop"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            android:fontFamily="@font/red_hat_display"/>
+
+        <TextView
+            android:id="@+id/textviewEAZE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EAZE"
+            android:textColor="@color/turquoise"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/red_hat_display"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:text="Existing Users"
+        android:textSize="20sp"
         android:textStyle="bold"
-        android:gravity="center"
-        android:layout_width="match_parent"
+        android:textColor="@color/secondary_gray"
+        android:fontFamily="@font/red_hat_display"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="87dp"
+        android:layout_marginBottom="20dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="353dp"
+        android:layout_height="wrap_content"
+        app:boxStrokeColor="@color/turquoise"
+        android:layout_gravity="center_horizontal"
+        android:textColorHint="@color/gray">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/email"
+            android:fontFamily="@font/red_hat_display"
             android:hint="@string/Email"
+            android:textColorHint="@color/gray"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -32,12 +80,18 @@
 <!--password:
 -->
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="353dp"
+        android:layout_height="wrap_content"
+        app:boxStrokeColor="@color/primary_blue"
+        android:layout_gravity="center_horizontal"
+        android:textColorHint="@color/gray"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password"
             android:hint="@string/Password"
+            android:fontFamily="@font/red_hat_display"
+            android:textColorHint="@color/light_gray"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -50,20 +104,44 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/btn_login"
-        android:text="Login"
+    <FrameLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="45dp">
 
+
+        <ImageButton
+            android:id="@+id/btn_login"
+            android:text="Login"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:src="@drawable/gradient_button"
+            android:clipToOutline="true"
+            android:scaleType="centerCrop"
+            android:background="@drawable/rounded_button" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/red_hat_display"
+            android:text="Login"
+            android:gravity="center"
+            android:textColor="@color/navy_blue"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </FrameLayout>
     <TextView
         android:id="@+id/signUpNow"
         android:text="@string/create_an_account"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_marginTop="25dp"
-        android:layout_width="match_parent"
+        android:textSize="17sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="23dp"
+        android:textAlignment="center"
+        android:textColor="@color/light_gray"
+        android:fontFamily="@font/red_hat_display"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
 

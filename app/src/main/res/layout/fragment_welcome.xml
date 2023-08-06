@@ -1,41 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WelcomeScreen">
+    android:background="@drawable/gradient_with_image"
+    android:orientation="vertical"
+    android:padding="16dp">
+
 
     <TextView
-        android:text="I am a..."
         android:id="@+id/textView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/button_shopper"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="25dp"
+        android:text="Welcome to"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:fontFamily="@font/red_hat_display"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textviewShop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:text="Shop"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            android:fontFamily="@font/red_hat_display"/>
+
+        <TextView
+            android:id="@+id/textviewEAZE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EAZE"
+            android:textColor="@color/turquoise"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/red_hat_display"/>
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/button_shopper"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Shopper"
-        app:layout_constraintEnd_toStartOf="@+id/button_owner"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        android:layout_width="353dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="165dp"
+        android:backgroundTint="@color/turquoise"
+        android:textColor="@color/navy_blue"
+        android:layout_gravity="center_horizontal"
+        android:text="I'm a Shopper"
+        android:textSize="18sp"
+        android:fontFamily="@font/red_hat_display"
+        android:textStyle="bold" />
+
 
     <Button
         android:id="@+id/button_owner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Owner"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button_shopper"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        android:layout_width="353dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/primary_blue"
+        android:textColor="@color/navy_blue"
+        android:layout_gravity="center_horizontal"
+        android:textSize="18sp"
+        android:fontFamily="@font/red_hat_display"
+        android:textStyle="bold"
+        android:text="I'm a Store Owner"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

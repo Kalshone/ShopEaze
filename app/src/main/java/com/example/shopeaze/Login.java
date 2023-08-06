@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,7 +33,7 @@ import com.google.firebase.ktx.Firebase;
 public class Login extends Fragment {       //shopper login
 
     TextInputEditText editTextEmail, editTextPassword;
-    Button buttonLogin;
+    ImageButton buttonLogin;
     FirebaseAuth mAuth;
     ProgressBar progressBar;
     TextView textView;

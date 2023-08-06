@@ -211,4 +211,3 @@ public class ProductListFragment extends Fragment implements AddProductDialog.On
         super.onResume();
     }
 }
-

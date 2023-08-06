@@ -87,6 +87,9 @@
         <action
             android:id="@+id/action_StoreList_to_ProductsOffered"
             app:destination="@id/ProductsOffered" />
+        <action
+            android:id="@+id/action_StoreList_to_Cart"
+            app:destination="@id/Cart"/>
     </fragment>
 
     <fragment
@@ -170,6 +173,17 @@
             android:id="@+id/action_ownerLogin_to_ProductList"
             app:destination="@id/ProductList" />
 
+    </fragment>
+
+    <fragment
+        android:id="@+id/Cart"
+        android:name="com.example.shopeaze.FragmentMyCart"
+        android:label="My Cart"
+        tools:layout="@layout/activity_cart">
+
+        <action
+            android:id="@+id/action_Cart_to_StoreList"
+            app:destination="@id/StoreList"/>
     </fragment>
 
 
