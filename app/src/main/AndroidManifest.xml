@@ -21,6 +21,9 @@
             android:name=".Logout"
             android:exported="false" />
         <activity
+            android:name=".Logout"
+            android:exported="false" />
+        <activity
             android:name=".SignUp"
             android:exported="false" />
         <activity
