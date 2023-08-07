@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.fragment.app.Fragment;
@@ -22,7 +23,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class Logout extends Fragment {
 
     FirebaseAuth auth;
-    Button button;
+    ImageButton button;
     TextView textView;
     FirebaseUser user;
 
