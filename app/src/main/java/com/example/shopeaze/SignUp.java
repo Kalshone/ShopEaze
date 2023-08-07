@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,14 +33,14 @@ import com.google.firebase.database.ValueEventListener;
 public class SignUp extends Fragment {
 
     TextInputEditText editTextEmail, editTextPassword;
-    Button buttonSignUp;
+    ImageButton buttonSignUp;
     FirebaseAuth mAuth;
     ProgressBar progressBar;
     TextView textView;
 
     FirebaseDatabase db;
 
-/*
+
     @Override
     public void onStart() {
         super.onStart();
@@ -54,7 +55,6 @@ public class SignUp extends Fragment {
                     .navigate(R.id.action_logout_to_WelcomeScreen);
         }
     }
-*/
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -65,11 +65,20 @@ public class SignUp extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        Button buttonBackToLogin = view.findViewById(R.id.buttonBackToLogin);
+        buttonBackToLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(SignUp.this)
+                        .navigate(R.id.action_signUp_to_Login);
+            }
+        });
+
         editTextEmail = view.findViewById(R.id.email);
         editTextPassword = view.findViewById(R.id.password);
         buttonSignUp = view.findViewById(R.id.btn_signup);
         progressBar = view.findViewById(R.id.progressBar);
-        textView = view.findViewById(R.id.loginNow);
+        /*textView = view.findViewById(R.id.loginNow);
 
         textView.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -77,7 +86,7 @@ public class SignUp extends Fragment {
                 NavHostFragment.findNavController(SignUp.this)
                         .navigate(R.id.action_signUp_to_Login);
             }
-        });
+        });*/
 
         buttonSignUp.setOnClickListener(new View.OnClickListener() {
             @Override

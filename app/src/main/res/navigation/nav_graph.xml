@@ -21,7 +21,7 @@
             app:destination="@id/StoreList" />
         <action
             android:id="@+id/action_Login_to_orderFragment"
-            app:destination="@id/orderFragment" />
+            app:destination="@id/OrderFragment" />
     </fragment>
 
     <fragment
@@ -90,6 +90,9 @@
         <action
             android:id="@+id/action_StoreList_to_Cart"
             app:destination="@id/Cart"/>
+        <action
+            android:id="@+id/action_StoreList_to_OrderFragment"
+            app:destination="@id/OrderFragment" />
     </fragment>
 
     <fragment
@@ -158,10 +161,17 @@
     </fragment>
 
     <fragment
-        android:id="@+id/orderFragment"
+        android:id="@+id/OrderFragment"
         android:name="com.example.shopeaze.OrderFragment"
         android:label="fragment_orders"
-        tools:layout="@layout/fragment_orders" />
+        tools:layout="@layout/fragment_orders" >
+        <action
+            android:id="@+id/action_OrderFragment_to_Cart"
+            app:destination="@id/Cart" />
+        <action
+            android:id="@+id/action_OrderFragment_to_StoreList"
+            app:destination="@id/StoreList" />
+    </fragment>
 
     <fragment
         android:id="@+id/ownerLogin"
@@ -189,6 +199,9 @@
         <action
             android:id="@+id/action_Cart_to_StoreList"
             app:destination="@id/StoreList"/>
+        <action
+            android:id="@+id/action_Cart_to_Orders"
+            app:destination="@id/OrderFragment"/>
     </fragment>
 
 

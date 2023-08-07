@@ -4,25 +4,91 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
+    android:background="@drawable/gradient_with_image"
     android:layout_height="match_parent"
-    android:padding="15dp"
+    android:padding="16dp"
     tools:context=".SignUp">
 
-    <TextView
-        android:text="@string/Sign_up"
-        android:textSize="30sp"
+    <Button
+        android:id="@+id/buttonBackToLogin"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:text="Back to Login"
+        android:textColor="@color/navy_blue"
+        android:textSize="11sp"
+        android:fontFamily="@font/red_hat_display"
+        android:textAllCaps="false"
         android:textStyle="bold"
-        android:gravity="center"
-        android:layout_width="match_parent"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp"
+        android:backgroundTint="@color/secondary_gray"
+        android:background="@drawable/rounded_button"
+        android:clipToOutline="true"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="17dp"
+        android:text="Welcome to"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:fontFamily="@font/red_hat_display"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textviewShop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="17dp"
+            android:text="Shop"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            android:fontFamily="@font/red_hat_display"/>
+
+        <TextView
+            android:id="@+id/textviewEAZE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EAZE"
+            android:textColor="@color/turquoise"
+            android:layout_marginLeft="2dp"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/red_hat_display"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:text="New Users"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/secondary_gray"
+        android:fontFamily="@font/red_hat_display"
+        android:layout_marginLeft="17dp"
+        android:layout_marginTop="87dp"
+        android:layout_marginBottom="20dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="353dp"
+        android:layout_height="wrap_content"
+        app:boxStrokeColor="@color/turquoise"
+        android:layout_gravity="center_horizontal"
+        android:textColorHint="@color/gray">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/email"
-            android:hint="@string/email"
+            android:fontFamily="@font/red_hat_display"
+            android:hint="@string/Email"
+            android:textColorHint="@color/gray"
+            android:textColor="@color/secondary_gray"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -32,12 +98,19 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="353dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/gray"
+        app:boxStrokeColor="@color/primary_blue"
+        android:layout_gravity="center_horizontal"
+        android:textColorHint="@color/gray">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password"
             android:hint="@string/Password"
+            android:fontFamily="@font/red_hat_display"
+            android:textColorHint="@color/gray"
+            android:textColor="@color/secondary_gray"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -50,21 +123,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/btn_signup"
-        android:text="@string/Sign_up"
+    <FrameLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="45dp">
 
-    <TextView
-        android:id="@+id/loginNow"
-        android:text="@string/click_to_login"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+
+        <ImageButton
+            android:id="@+id/btn_signup"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:src="@drawable/gradient_button"
+            android:clipToOutline="true"
+            android:scaleType="centerCrop"
+            android:background="@drawable/rounded_button" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/red_hat_display"
+            android:text="Signup"
+            android:gravity="center"
+            android:textColor="@color/navy_blue"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </FrameLayout>
 
 
 </LinearLayout>

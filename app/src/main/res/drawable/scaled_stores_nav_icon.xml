@@ -1,0 +1,5 @@
+<bitmap xmlns:android="http://schemas.android.com/apk/res/android"
+    android:src="@drawable/stores_nav_icon"
+    android:gravity="center"
+    android:width="0dp"
+    android:height="0dp" />

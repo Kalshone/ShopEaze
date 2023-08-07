@@ -1,41 +1,26 @@
 package com.example.shopeaze;
 
+import java.util.List;
+
 public class Order {
-    private String orderId;
-    private String userId;
-    private String status;
+    private List<Products> products;
 
-    // Empty constructor needed for Firestore
-    public Order() {}
-
-    public Order(String userId, String status) {
-        this.userId = userId;
-        this.status = status;
+    public List<Products> getProducts() {
+        return products;
     }
 
-    // Getter methods
-    public String getOrderId() {
-        return orderId;
-    }
+    public static class Products {
+        private String status;
+        private String userId;
 
-    public String getUserId() {
-        return userId;
-    }
+        public String getStatus() {
+            return status;
+        }
 
-    public String getStatus() {
-        return status;
-    }
-
-    // Setter methods
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
+        public String getUserId() {
+            return userId;
+        }
     }
 }
+
+
