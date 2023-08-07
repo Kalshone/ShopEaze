@@ -105,14 +105,17 @@ public class OrderFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 orders.clear();
+                int orderNumber = 1;
                 for (DataSnapshot orderSnapshot : dataSnapshot.getChildren()) {
                     String orderId = orderSnapshot.getKey();
                     String status = orderSnapshot.child("Status").getValue(String.class);
-                    orders.add(new Order(orderId, status));
+                    orders.add(new Order(String.valueOf(orderNumber), status));
+                    orderNumber++;
                     Log.d("OrderFragment", "OrderID: " + orderId + ", Status: " + status); // Logging each order's status
                 }
                 ordersAdapter = new OrdersAdapter(orders);
                 orderList.setAdapter(ordersAdapter);
+                ordersAdapter.notifyDataSetChanged();
 
                 if (orders.size() > 0) {
                     Log.d("OrderFragment", "Successfully fetched " + orders.size() + " orders.");

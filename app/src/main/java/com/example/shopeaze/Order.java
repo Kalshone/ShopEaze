@@ -3,20 +3,20 @@ package com.example.shopeaze;
 import java.util.List;
 
 public class Order {
-    private String orderId;
+    private String orderNumber;
     private String status;
 
-    public Order(String orderId, String status) {
-        this.orderId = orderId;
+    public Order(String orderNumber, String status) {
+        this.orderNumber = orderNumber;
         this.status = status;
     }
 
-    public String getOrderId() {
-        return orderId;
+    public String getOrderNumber() {
+        return orderNumber;
     }
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
+    public void setOrderNumber(String orderNumber) {
+        this.orderNumber = orderNumber;
     }
 
     public String getStatus() {

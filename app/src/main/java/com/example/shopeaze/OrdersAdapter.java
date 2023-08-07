@@ -27,8 +27,10 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.OrderViewH
     @Override
     public void onBindViewHolder(OrderViewHolder holder, int position) {
         Order order = orderList.get(position);
-        holder.status.setText(order.getStatus());
+        String displayText = "Order " + order.getOrderNumber() + " - Status: " + order.getStatus();
+        holder.status.setText(displayText);
     }
+
 
     @Override
     public int getItemCount() {
