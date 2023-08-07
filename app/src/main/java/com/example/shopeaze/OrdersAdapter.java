@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -29,6 +30,16 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.OrderViewH
         Order order = orderList.get(position);
         String displayText = "Order " + order.getOrderNumber() + " - Status: " + order.getStatus();
         holder.status.setText(displayText);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Order clickedOrder = orderList.get(position);
+                OrderDetailDialog dialog = new OrderDetailDialog(clickedOrder);
+                dialog.show(((FragmentActivity) v.getContext()).getSupportFragmentManager(), "OrderDetailDialog");
+            }
+        });
+
     }
 
 

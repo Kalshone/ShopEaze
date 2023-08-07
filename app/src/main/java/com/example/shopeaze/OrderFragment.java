@@ -109,7 +109,10 @@ public class OrderFragment extends Fragment {
                 for (DataSnapshot orderSnapshot : dataSnapshot.getChildren()) {
                     String orderId = orderSnapshot.getKey();
                     String status = orderSnapshot.child("Status").getValue(String.class);
-                    orders.add(new Order(String.valueOf(orderNumber), status));
+                    String brand = orderSnapshot.child("cartProductBrand").getValue(String.class);
+                    Double price = orderSnapshot.child("cartProductPrice").getValue(Double.class);
+                    int quantity = orderSnapshot.child("cartQuantity").getValue(Integer.class);
+                    orders.add(new Order(String.valueOf(orderNumber), status, brand, price, quantity));
                     orderNumber++;
                     Log.d("OrderFragment", "OrderID: " + orderId + ", Status: " + status); // Logging each order's status
                 }
