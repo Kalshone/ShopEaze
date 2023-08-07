@@ -100,6 +100,7 @@ public class OrderFragment extends Fragment {
 
 
     private void fetchOrders() {
+        Log.d("OrderFragment", "Starting to fetch orders...");
         mDatabase.child(currentUserID).child("Orders").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -108,10 +109,16 @@ public class OrderFragment extends Fragment {
                     String orderId = orderSnapshot.getKey();
                     String status = orderSnapshot.child("Status").getValue(String.class);
                     orders.add(new Order(orderId, status));
+                    Log.d("OrderFragment", "OrderID: " + orderId + ", Status: " + status); // Logging each order's status
                 }
                 ordersAdapter = new OrdersAdapter(orders);
                 orderList.setAdapter(ordersAdapter);
-                Log.d("OrderFragment", "Orders fetched: " + orders.size());
+
+                if (orders.size() > 0) {
+                    Log.d("OrderFragment", "Successfully fetched " + orders.size() + " orders.");
+                } else {
+                    Log.d("OrderFragment", "No orders found for the user.");
+                }
             }
 
             public void onCancelled(DatabaseError databaseError) {
