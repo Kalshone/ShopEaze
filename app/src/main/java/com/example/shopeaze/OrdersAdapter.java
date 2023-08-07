@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.OrderViewHolder> {
+
     private List<Order> orderList;
 
     public OrdersAdapter(List<Order> orderList) {
@@ -19,34 +20,27 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.OrderViewH
 
     @Override
     public OrderViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_order, parent, false);
-        return new OrderViewHolder(itemView);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.order_item, parent, false);
+        return new OrderViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(OrderViewHolder holder, int position) {
         Order order = orderList.get(position);
-        if (!order.getProducts().isEmpty()) {
-            holder.statusView.setText(order.getProducts().get(0).getStatus());
-        }
+        holder.status.setText(order.getStatus());
     }
-
-
-
 
     @Override
     public int getItemCount() {
         return orderList.size();
     }
 
-    public static class OrderViewHolder extends RecyclerView.ViewHolder {
-        public TextView statusView;
+    class OrderViewHolder extends RecyclerView.ViewHolder {
+        TextView status;
 
         public OrderViewHolder(View itemView) {
             super(itemView);
-            statusView = itemView.findViewById(R.id.statusView);
+            status = itemView.findViewById(R.id.status_text);
         }
     }
 }
-

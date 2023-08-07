@@ -14,9 +14,10 @@
         android:text="Refresh" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewOrders"
+        android:id="@+id/order_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_alignParentTop="true"
         android:layout_weight="1"
         android:layout_below="@+id/refreshButton" />
 

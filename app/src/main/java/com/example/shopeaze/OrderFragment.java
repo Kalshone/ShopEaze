@@ -36,24 +36,32 @@ public class OrderFragment extends Fragment {
     // Declare a ListView to display the orders and a Button for refreshing the orders.
     private Button refreshButton;
 
-    // Declare a List to hold the orders data.
-    private RecyclerView recyclerView;
-    private OrdersAdapter adapter;
-    private List<Order> orderList = new ArrayList<>();
+    private DatabaseReference mDatabase;
+    private FirebaseAuth mAuth;
+    private String currentUserID;
+    private RecyclerView orderList;
+    private List<Order> orders;
+    private OrdersAdapter ordersAdapter;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_orders, container, false);
 
-        recyclerView = view.findViewById(R.id.recyclerViewOrders);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        // Initialize Firebase
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child("Shoppers");
+        mAuth = FirebaseAuth.getInstance();
+        currentUserID = mAuth.getCurrentUser().getUid();
 
-        adapter = new OrdersAdapter(orderList);
-        recyclerView.setAdapter(adapter);
+        orderList = view.findViewById(R.id.order_list);
+        orderList.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        orders = new ArrayList<>();
+
+        fetchOrders();
 
         Button refreshButton = view.findViewById(R.id.refreshButton);
         refreshButton.setOnClickListener(v -> {
-            fetchData();
+            fetchOrders();
         });
 
         ImageButton ordersButton = view.findViewById(R.id.button_orders);
@@ -68,8 +76,6 @@ public class OrderFragment extends Fragment {
                 }
             }
         });
-
-        fetchData();
 
         ImageButton storesButton = view.findViewById(R.id.button_stores);
         storesButton.setOnClickListener(new View.OnClickListener() {
@@ -93,43 +99,21 @@ public class OrderFragment extends Fragment {
     }
 
 
-    // Function to load orders from Firestore.
-    private void fetchData() {
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-
-
-        if (currentUser == null) {
-            Log.d("OrderFragment", "Current user is null");
-            return;
-        } else {
-            String userId = currentUser.getUid();
-            Log.d("OrderFragment", "Current user has id: " + userId);
-        }
-
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("orders");
-
-        ref.addValueEventListener(new ValueEventListener() {
+    private void fetchOrders() {
+        mDatabase.child(currentUserID).child("Orders").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                orderList.clear();
-
+                orders.clear();
                 for (DataSnapshot orderSnapshot : dataSnapshot.getChildren()) {
-                    Order order = orderSnapshot.getValue(Order.class);
-
-                    if (order != null) {
-                        for (Order.Products product : order.getProducts()) {
-                            if (product.getUserId() != null && product.getUserId().equals(currentUser.getUid())) {
-                                orderList.add(order);
-                                break;  // Break after adding, to avoid adding the same order multiple times
-                            }
-                        }
-                    }
+                    String orderId = orderSnapshot.getKey();
+                    String status = orderSnapshot.child("Status").getValue(String.class);
+                    orders.add(new Order(orderId, status));
                 }
-
-                adapter.notifyDataSetChanged();
+                ordersAdapter = new OrdersAdapter(orders);
+                orderList.setAdapter(ordersAdapter);
+                Log.d("OrderFragment", "Orders fetched: " + orders.size());
             }
 
-            @Override
             public void onCancelled(DatabaseError databaseError) {
                 Log.e("OrdersFragment", "onCancelled", databaseError.toException());
             }

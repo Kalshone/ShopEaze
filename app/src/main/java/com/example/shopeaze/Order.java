@@ -3,24 +3,28 @@ package com.example.shopeaze;
 import java.util.List;
 
 public class Order {
-    private List<Products> products;
+    private String orderId;
+    private String status;
 
-    public List<Products> getProducts() {
-        return products;
+    public Order(String orderId, String status) {
+        this.orderId = orderId;
+        this.status = status;
     }
 
-    public static class Products {
-        private String status;
-        private String userId;
+    public String getOrderId() {
+        return orderId;
+    }
 
-        public String getStatus() {
-            return status;
-        }
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
 
-        public String getUserId() {
-            return userId;
-        }
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
-
 
