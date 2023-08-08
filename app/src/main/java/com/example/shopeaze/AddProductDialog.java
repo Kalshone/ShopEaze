@@ -33,23 +33,24 @@ public class AddProductDialog extends DialogFragment {
         this.onProductAddedListener = onProductAddedListener;
     }
 
-    private void addProduct(final Product newProduct) {
-        String currentUserUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    private void addProduct(final Product newProduct, final String storeID) {
         DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("Users");
-        DatabaseReference storeOwnerRef = usersRef.child("StoreOwner").child(currentUserUid);
-        storeOwnerRef.child("Products").push().setValue(newProduct);
+        DatabaseReference storeOwnerRef = usersRef.child("StoreOwner")
+                .child(storeID)
+                .child("Products");
+        storeOwnerRef.push().setValue(newProduct);
 
         if (onProductAddedListener != null) {
             onProductAddedListener.onProductAdded(newProduct);
         }
     }
 
-    private void checkProductExistence(final Product newProduct) {
+    private void checkProductExistence(final Product newProduct,  final String storeID) {
         String currentUserUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference()
                 .child("Users")
                 .child("StoreOwner")
-                .child(currentUserUid)
+                .child(storeID)
                 .child("Products");
 
         productsRef.orderByChild("name")
@@ -73,7 +74,7 @@ public class AddProductDialog extends DialogFragment {
                                     .setPositiveButton("OK", null)
                                     .show();
                         } else {
-                            addProduct(newProduct);
+                            addProduct(newProduct, storeID);
                         }
                     }
 
@@ -110,6 +111,7 @@ public class AddProductDialog extends DialogFragment {
                         String productName = editTextProductName.getText().toString().trim();
                         String productBrand = editTextProductBrand.getText().toString().trim();
                         String imageUrl = editTextProductImage.getText().toString().trim();
+                        String currentUserUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                         // Check if productName and productBrand are empty
                         if (productName.isEmpty() || productBrand.isEmpty()) {
                             new AlertDialog.Builder(getActivity())
@@ -142,8 +144,9 @@ public class AddProductDialog extends DialogFragment {
                             newProduct.setDescription(productDescription);
                             newProduct.setQuantity(productQuantity);
                             newProduct.setImage(imageUrl);
+                            newProduct.setStoreID(currentUserUid);
 
-                            checkProductExistence(newProduct);
+                            checkProductExistence(newProduct, currentUserUid);
                         }
                     }
                 })

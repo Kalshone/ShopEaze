@@ -222,7 +222,7 @@
 
     <fragment
         android:id="@+id/Cart"
-        android:name="com.example.shopeaze.FragmentMyCart"
+        android:name="com.example.shopeaze.MyCartFragment"
         android:label="My Cart"
         tools:layout="@layout/activity_cart">
 
@@ -232,7 +232,26 @@
         <action
             android:id="@+id/action_Cart_to_Orders"
             app:destination="@id/OrderFragment"/>
+        <action
+            android:id="@+id/action_Cart_to_order_confirm"
+            app:destination="@id/Order_confirmation"/>
     </fragment>
+
+    <fragment
+        android:id="@+id/Order_confirmation"
+        android:name="com.example.shopeaze.OrderConfirm"
+        android:label="Order Confirmed"
+        tools:layout="@layout/order_confirm">
+
+        <action
+            android:id="@+id/action_Order_confirm_to_StoreList"
+            app:destination="@id/StoreList"/>
+        <action
+            android:id="@+id/action_Order_confirm_to_Cart"
+            app:destination="@id/Cart"/>"
+
+    </fragment>
+
 
     <fragment
         android:id="@+id/OwnerOrders"
@@ -245,6 +264,7 @@
         android:name="com.example.shopeaze.OwnerOrders"
         android:label="Owner Orders"
         tools:layout="@layout/fragment_order_product_details" />
+
 
 
 </navigation>

@@ -9,6 +9,8 @@ public class Product implements Serializable {
     private String productBrand;
     private String productDescription;
     private double productPrice;
+    private String status;
+    private String storeID;
     private int quantity;
     private String imageURL;
 
@@ -16,14 +18,18 @@ public class Product implements Serializable {
 
     // Constructor
     public Product(String name, String brand, double price,
-                   String description, int quantity, String imageURL) {
+                   String description, int quantity, String imageURL,
+                   String status, String storeName, String storeID){
+
         this.productID = generateProductID();
         this.productName = name;
         this.productBrand = brand;
         this.productPrice = price;
         this.productDescription = description;
+        this.status = status;
         this.quantity = quantity;
         this.imageURL = imageURL;
+        this.storeID = storeID;
     }
 
     private String generateProductID() {
@@ -43,14 +49,24 @@ public class Product implements Serializable {
     public double getPrice() {
         return productPrice;
     }
-    public int getQuantity() { return quantity; }
+//    public int getQuantity() { return cartQuantity; }
     public String getImage() { return imageURL; }
+    public String getStatus() { return status; }
+    public int getQuantity() { return quantity; }
+    public String getImageURL() { return imageURL; }
+    public String getStoreID() { return storeID; }
+
     // Setters
     public void setProductID(String id) { this.productID = id; }
     public void setName(String name) { this.productName = name; }
     public void setPrice(double price) { this.productPrice = price; }
     public void setDescription(String description) { this.productDescription = description; }
     public void setBrand(String brand) { this.productBrand = brand; }
-    public void setQuantity(int quantity) { this.quantity = quantity; }
+//    public void setQuantity(int quantity) { this.cartQuantity = quantity; }
     public void setImage(String imageURL) { this.imageURL = imageURL; }
+    public void setStatus(String status) { this.status = status; }
+    public void setQuantity(int quantity) { this.quantity = quantity; }
+    public void setStoreID(String storeID) { this.storeID = storeID; }
+
+
 }
