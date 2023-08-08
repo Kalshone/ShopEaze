@@ -7,7 +7,7 @@ public class CartItem {
     private String cartProductName;
     private String cartProductBrand;
     private double cartProductPrice;
-    private int image;
+    private String imageURL;
 
     public CartItem(){
 
@@ -17,7 +17,7 @@ public class CartItem {
         this.cartProductName = product.getName();
         this.cartProductBrand = product.getBrand();
         this.cartProductPrice = product.getPrice();
-        this.image = product.getImage();
+        this.imageURL = product.getImage();
     }
 
     //Getters
@@ -36,8 +36,8 @@ public class CartItem {
     public int getQuantity() {
         return quantity;
     }
-    public int getImage() {
-        return image;
+    public String getImage() {
+        return imageURL;
     }
 
     //Necessary setters:

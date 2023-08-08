@@ -100,6 +100,8 @@ public class AddProductDialog extends DialogFragment {
         final EditText editTextProductPrice = dialogView.findViewById(R.id.editTextProductPrice);
         final EditText editTextProductDescription = dialogView.findViewById(R.id.editTextProductDescription);
         final EditText editTextProductQuantity = dialogView.findViewById(R.id.editTextProductQuantity);
+        final EditText editTextProductImage = dialogView.findViewById(R.id.editTextProductImage);
+
 
         builder.setTitle("Add Product")
                 .setPositiveButton("Add", new DialogInterface.OnClickListener() {
@@ -107,6 +109,7 @@ public class AddProductDialog extends DialogFragment {
                     public void onClick(DialogInterface dialog, int which) {
                         String productName = editTextProductName.getText().toString().trim();
                         String productBrand = editTextProductBrand.getText().toString().trim();
+                        String imageUrl = editTextProductImage.getText().toString().trim();
                         // Check if productName and productBrand are empty
                         if (productName.isEmpty() || productBrand.isEmpty()) {
                             new AlertDialog.Builder(getActivity())
@@ -138,6 +141,7 @@ public class AddProductDialog extends DialogFragment {
                             newProduct.setPrice(productPrice);
                             newProduct.setDescription(productDescription);
                             newProduct.setQuantity(productQuantity);
+                            newProduct.setImage(imageUrl);
 
                             checkProductExistence(newProduct);
                         }

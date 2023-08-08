@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -42,10 +43,11 @@ public class ProductDetailsFragment extends Fragment {
     TextView buttonRemoveProduct;
     View rootView;
 
-    public static ProductDetailsFragment newInstance(Product product) {
+    public static ProductDetailsFragment newInstance(Product product, String productImageURL) {
         ProductDetailsFragment fragment = new ProductDetailsFragment();
         Bundle args = new Bundle();
         args.putSerializable(ARG_PRODUCT, product);
+        args.putString("productImageURL", productImageURL);
         fragment.setArguments(args);
         return fragment;
     }
@@ -78,6 +80,20 @@ public class ProductDetailsFragment extends Fragment {
             Toast.makeText(requireContext(), "No arguments passed to the fragment.", Toast.LENGTH_SHORT).show();
         }
 
+        String productImageURL = arguments.getString("productImageURL");
+
+        if (product != null) {
+            // Load and display the image using Glide
+            Glide.with(requireContext())
+                    .load(productImageURL)
+                    .placeholder(R.drawable.placeholder_image) // Replace with a placeholder image resource
+                    .error(R.drawable.error_image) // Replace with an error image resource
+                    .into(imageViewProduct);
+            // Rest of your code to initialize other views
+        } else {
+            Toast.makeText(requireContext(), "Product data is null.", Toast.LENGTH_SHORT).show();
+        }
+
         Button buttonGoBack = rootView.findViewById(R.id.buttonGoBack);
         buttonGoBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,7 +103,6 @@ public class ProductDetailsFragment extends Fragment {
                 navController.navigate(R.id.action_product_details_to_product_list);
             }
         });
-
 
         TextView buttonRemoveProduct = rootView.findViewById(R.id.buttonRemoveProduct);
         buttonRemoveProduct.setOnClickListener(new View.OnClickListener() {
@@ -101,6 +116,27 @@ public class ProductDetailsFragment extends Fragment {
     }
 
     private void initializeViews(View rootView) {
+
+        Bundle arguments = getArguments();
+        if (arguments != null) {
+            product = (Product) arguments.getSerializable(ARG_PRODUCT);
+            String productImageURL = arguments.getString("productImageURL");
+
+            if (product != null) {
+                // Load and display the image using Glide
+                Glide.with(requireContext())
+                        .load(productImageURL)
+                        .placeholder(R.drawable.placeholder_image) // Replace with a placeholder image resource
+                        .error(R.drawable.error_image) // Replace with an error image resource
+                        .into(imageViewProduct);
+
+                // Rest of your code to initialize other views
+            } else {
+                Toast.makeText(requireContext(), "Product data is null.", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(requireContext(), "No arguments passed to the fragment.", Toast.LENGTH_SHORT).show();
+        }
 
         imageViewProduct.setImageResource(R.drawable.sample);
         textViewProductName.setText(product.getName());
@@ -119,7 +155,7 @@ public class ProductDetailsFragment extends Fragment {
         buttonChangeDescription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showChangeDescriptionDialog();
+                showChangeDescriptionDialog(textViewProductDescription.getText().toString());
             }
         });
 
@@ -157,7 +193,7 @@ public class ProductDetailsFragment extends Fragment {
                 .show();
     }
 
-    private void showChangeDescriptionDialog() {
+    private void showChangeDescriptionDialog(String initialDescription) {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         builder.setTitle("Change Description")
                 .setView(R.layout.dialog_change_description)
@@ -169,6 +205,7 @@ public class ProductDetailsFragment extends Fragment {
                         String newDescription = editTextNewDescription.getText().toString();
                         if (!newDescription.isEmpty()) {
                             updateProductDescription(newDescription);
+                            textViewProductDescription.setText(newDescription);
                         } else {
                             showToast("No changes applied.");
                         }
@@ -179,8 +216,14 @@ public class ProductDetailsFragment extends Fragment {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
                     }
-                })
-                .show();
+                });
+                // .show();
+        // Set the initial text of the EditText to the current description
+        View dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_change_description, null);
+        EditText editTextNewDescription = dialogView.findViewById(R.id.editTextNewDescription);
+        editTextNewDescription.setText(initialDescription);
+
+        builder.setView(dialogView).show();
     }
 
     private void updateProductPrice(String newPrice) {
@@ -190,13 +233,17 @@ public class ProductDetailsFragment extends Fragment {
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                 .child("Products");
 
-        Query productQuery = productRef.orderByChild("name").equalTo(product.getName());
+        Query productQuery = productRef
+                .orderByChild("name")
+                .equalTo(product.getName());
 
         productQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot productSnapshot : snapshot.getChildren()) {
-                    productSnapshot.getRef().child("price").setValue(Double.parseDouble(newPrice));
+                    if (productSnapshot.child("brand").getValue(String.class).equals(product.getBrand())) {
+                        productSnapshot.getRef().child("price").setValue(Double.parseDouble(newPrice));
+                    }
                 }
                 showToast("Product price updated successfully.");
                 textViewProductPrice.setText("$ " + newPrice);
@@ -221,11 +268,19 @@ public class ProductDetailsFragment extends Fragment {
         productQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                boolean updateSuccessful = false;
                 for (DataSnapshot productSnapshot : snapshot.getChildren()) {
-                    productSnapshot.getRef().child("description").setValue(newDescription);
+                    if (productSnapshot.child("brand").getValue(String.class).equals(product.getBrand())) {
+                        productSnapshot.getRef().child("description").setValue(newDescription);
+                    }
+                    updateSuccessful = true;
                 }
-                showToast("Product description updated successfully.");
-                textViewProductDescription.setText(newDescription);
+                if (updateSuccessful) {
+                    showToast("Product description updated successfully.");
+                    textViewProductDescription.setText(newDescription);
+                } else {
+                    showToast("Failed to update product description.");
+                }
             }
 
             @Override
@@ -275,7 +330,9 @@ public class ProductDetailsFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot productSnapshot : snapshot.getChildren()) {
-                    productSnapshot.getRef().child("quantity").setValue(Integer.parseInt(newQuantity));
+                    if (productSnapshot.child("brand").getValue(String.class).equals(product.getBrand())) {
+                        productSnapshot.getRef().child("quantity").setValue(Double.parseDouble(newQuantity));
+                    }
                 }
                 showToast("Product quantity updated successfully.");
                 textViewProductQuantity.setText("Inventory Stock: " + newQuantity);
@@ -321,7 +378,9 @@ public class ProductDetailsFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot productSnapshot : snapshot.getChildren()) {
-                    productSnapshot.getRef().removeValue();
+                    if (productSnapshot.child("brand").getValue(String.class).equals(product.getBrand())) {
+                        productSnapshot.getRef().removeValue();
+                    }
                 }
                 NavController navController = NavHostFragment.findNavController(ProductDetailsFragment.this);
                 navController.navigate(R.id.action_product_details_to_product_list);

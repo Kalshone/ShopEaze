@@ -49,4 +49,15 @@
         android:textColor="@color/white"
         style="@style/AppTheme"/>
 
+    <EditText
+        android:id="@+id/editTextProductImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Image URL"
+        android:inputType="text"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/white"
+        style="@style/AppTheme"/>
+
+
 </LinearLayout>

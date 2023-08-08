@@ -114,7 +114,7 @@ public class Login extends Fragment {       //shopper login
                                 if (task.isSuccessful()) {
                                     //Get the current user:
                                     FirebaseUser user = mAuth.getCurrentUser();
-                                    Toast.makeText(getActivity(), "Login Successful", Toast.LENGTH_SHORT).show();
+                                    // Toast.makeText(getActivity(), "Login Successful", Toast.LENGTH_SHORT).show();
                                     NavHostFragment.findNavController(Login.this).navigate(R.id.action_Login_to_StoreList);
                                 } else {
                                     Toast.makeText(getActivity(), "Authentication failed.",

@@ -5,12 +5,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 //import com.bumptech.glide.Glide;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +50,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.productBrand.setText(product.getBrand());
         //holder.productPrice.setText("$ " + String.valueOf(product.getPrice()));
 
+        Glide.with(context)
+                .load(product.getImage())
+                .placeholder(R.drawable.placeholder_image) // Placeholder image while loading
+                .error(R.drawable.error_image) // Error image if loading fails
+                .into(holder.imageView);
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,12 +72,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     public static class ProductViewHolder extends RecyclerView.ViewHolder {
 
         TextView productName, productBrand, productPrice;
+        ImageView imageView;
 
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
             productName = itemView.findViewById(R.id.ProductName);
             productBrand = itemView.findViewById(R.id.ProductBrand);
             //productPrice = itemView.findViewById(R.id.ProductPrice);
+            imageView = itemView.findViewById(R.id.imageView);
         }
     }
 }
