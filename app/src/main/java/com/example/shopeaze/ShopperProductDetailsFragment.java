@@ -98,12 +98,11 @@ public class ShopperProductDetailsFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    //The product is already in the cart, update the quantity       (TEMPORARY, this will be done in actual cart)
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         CartItem existingCartItem = snapshot.getValue(CartItem.class);
-                        int newQuantity = existingCartItem.getQuantity() + 1;
-                        snapshot.getRef().child("quantity").setValue(newQuantity);
-                        Toast.makeText(getActivity(), "Items in cart: " + newQuantity, Toast.LENGTH_SHORT).show();
+                        int newQuantity = existingCartItem.getCartQuantity() + 1;
+                        snapshot.getRef().child("cartQuantity").setValue(newQuantity);
+                        Toast.makeText(getActivity(), "Number in cart: " + newQuantity, Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     //Product is not in Cart, add it with an initial quantity of 1

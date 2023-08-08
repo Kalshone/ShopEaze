@@ -13,6 +13,8 @@
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal">
 
+
+
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -87,6 +89,8 @@
                 android:textColor="@color/light_gray"
                 android:textSize="13sp"
                 android:layout_marginTop="10dp" />
+
+
         </FrameLayout>
 
         <FrameLayout
@@ -128,6 +132,17 @@
         </FrameLayout>
 
     </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerCartView"
+        android:layout_width="376dp"
+        android:layout_height="651dp" />
+
+    <Button
+        android:id="@+id/CheckoutButton"
+        android:layout_width="387dp"
+        android:layout_height="97dp"
+        android:text="Checkout" />
 
 
 </RelativeLayout>
