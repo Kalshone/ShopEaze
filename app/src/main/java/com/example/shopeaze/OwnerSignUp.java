@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,13 +32,13 @@ import com.google.firebase.database.ValueEventListener;
 
 public class OwnerSignUp extends Fragment {
     TextInputEditText editTextEmail, editTextPassword, editStoreName;
-    Button buttonSignUp;
+    ImageButton buttonSignUp;
     TextView textView;
     ProgressBar progressBar;
-    private FirebaseDatabase db;
+    FirebaseDatabase db;
     FirebaseAuth mAuth;
-/*
-    @Override
+
+   @Override
     public void onStart() {
         super.onStart();
         //new line:
@@ -48,10 +49,10 @@ public class OwnerSignUp extends Fragment {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
             NavHostFragment.findNavController(OwnerSignUp.this)
-                    .navigate(R.id.action_OwnerSignUp_to_logout);
+                    .navigate(R.id.action_OwnerSignUp_to_ProductList);
         }
     }
-*/
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -62,20 +63,29 @@ public class OwnerSignUp extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        Button buttonBackToLogin = view.findViewById(R.id.buttonBackToLogin);
+        buttonBackToLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(OwnerSignUp.this)
+                        .navigate(R.id.action_OwnerSignUp_to_ownerLogin);
+            }
+        });
+
         editTextEmail = view.findViewById(R.id.email);
         editTextPassword = view.findViewById(R.id.password);
         editStoreName = view.findViewById(R.id.store_name);
         buttonSignUp = view.findViewById(R.id.btn_signup);
         progressBar = view.findViewById(R.id.progressBar);
-        textView = view.findViewById(R.id.loginNow);
+        /*textView = view.findViewById(R.id.loginNow);*/
 
-        textView.setOnClickListener(new View.OnClickListener(){
+        /*textView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 NavHostFragment.findNavController(OwnerSignUp.this)
                         .navigate(R.id.action_OwnerSignUp_to_ownerLogin);
             }
-        });
+        });*/
 
         buttonSignUp.setOnClickListener(new View.OnClickListener() {
             @Override

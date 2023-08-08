@@ -63,6 +63,15 @@ public class Login extends Fragment {       //shopper login
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        Button buttonBackToWelcome = view.findViewById(R.id.buttonBackToWelcome);
+        buttonBackToWelcome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(Login.this)
+                        .navigate(R.id.action_Login_to_Welcome);
+            }
+        });
+
         editTextEmail = view.findViewById(R.id.email);
         editTextPassword = view.findViewById(R.id.password);
         buttonLogin = view.findViewById(R.id.btn_login);

@@ -1,4 +1,4 @@
-<RelativeLayout
+<!-- <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -57,7 +57,6 @@
                     android:layout_centerVertical="true"
                     android:gravity="center"/>
 
-                <!-- Move the Price TextView to the bottom -->
                 <TextView
                     android:id="@+id/ProductPrice"
                     android:layout_width="match_parent"
@@ -73,4 +72,78 @@
             </RelativeLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+</RelativeLayout> -->
+
+    <!-- res/layout/item_store_card.xml -->
+<RelativeLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:padding="8dp">
+
+<LinearLayout
+    android:layout_width="178dp"
+    android:layout_height="113dp"
+    android:background="@drawable/product_tile_background"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:paddingHorizontal="15dp">
+
+
+    <!-- Left-side store name -->
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="60dp"
+        android:layout_height="84dp"
+        android:layout_weight="1"
+        android:scaleType="centerCrop"
+        android:background="@drawable/rounded_corner_imageview"
+        android:clipToOutline="true"
+        android:layout_gravity="center"
+        android:layout_marginVertical="15dp"
+        android:src="@drawable/sample"
+        />
+
+    <!-- Center line separator -->
+    <View
+        android:layout_width="2dp"
+        android:layout_height="80dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/turquoise" />
+
+    <!-- Right-side store name -->
+    <LinearLayout
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginVertical="15dp">
+        <TextView
+            android:id="@+id/ProductName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/light_gray"
+            android:fontFamily="@font/red_hat_display"/>
+
+        <TextView
+            android:id="@+id/ProductBrand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_gravity="center_horizontal"
+            android:textSize="12sp"
+            android:textColor="@color/gray"
+            android:fontFamily="@font/red_hat_display" />
+
+    </LinearLayout>
+
+</LinearLayout>
+
 </RelativeLayout>
+
+

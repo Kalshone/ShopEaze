@@ -40,6 +40,7 @@ public class FragmentStoreList extends Fragment implements StoreAdapter.OnItemCl
         View rootView = inflater.inflate(R.layout.activity_store_list, container, false);
 
         final RecyclerView recyclerViewStores = rootView.findViewById(R.id.recyclerViewStores);
+        recyclerViewStores.setHasFixedSize(true);
         recyclerViewStores.setLayoutManager(new GridLayoutManager(getActivity(), 2));
 
         final StoreList storeList = new StoreList();

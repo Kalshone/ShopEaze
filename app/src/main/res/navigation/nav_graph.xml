@@ -23,6 +23,10 @@
         tools:layout="@layout/activity_login">
 
         <action
+            android:id="@+id/action_Login_to_Welcome"
+            app:destination="@id/WelcomeScreen"/>
+
+        <action
             android:id="@+id/action_Login_to_SignUp"
             app:destination="@id/signUp"   />
         <action
@@ -59,6 +63,10 @@
         android:name="com.example.shopeaze.SignUp"
         android:label="activity_sign_up"
         tools:layout="@layout/activity_sign_up" >
+
+        <action
+            android:id="@+id/action_signUp_to_StoreList"
+            app:destination="@id/StoreList"/>
         <action
             android:id="@+id/action_signUp_to_Login"
             app:destination="@id/Login" />
@@ -69,9 +77,9 @@
         android:label="activity_sign_up_owner"
         tools:layout="@layout/activity_sign_up_owner" >
 
-        <action
+        <!--<action
             android:id="@+id/action_OwnerSignUp_to_Login"
-            app:destination="@id/Login" />
+            app:destination="@id/Login" />-->
         <action
             android:id="@+id/action_OwnerSignUp_to_ownerLogin"
             app:destination="@id/ownerLogin" />
@@ -168,6 +176,9 @@
         android:label="fragment_product_list"
         tools:layout="@layout/fragment_product_list" >
         <action
+            android:id="@+id/action_ProductList_to_Logout"
+            app:destination="@id/logout"/>
+        <action
             android:id="@+id/action_product_list_to_product_details"
             app:destination="@id/ProductDetails" />
     </fragment>
@@ -190,6 +201,10 @@
         android:name="com.example.shopeaze.OwnerLogin"
         android:label="OwnerLogin"
         tools:layout="@layout/fragment_owner_login">
+
+        <action
+            android:id="@+id/action_OwnerLogin_to_Welcome"
+            app:destination="@id/WelcomeScreen"/>
         <action
             android:id="@+id/action_ownerLogin_to_OwnerSignUp"
             app:destination="@id/OwnerSignUp" />

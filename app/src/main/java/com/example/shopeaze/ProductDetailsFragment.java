@@ -36,10 +36,10 @@ public class ProductDetailsFragment extends Fragment {
     TextView textViewProductPrice;
     TextView textViewProductDescription;
     TextView textViewProductQuantity;
-    Button buttonChangeQuantity;
-    Button buttonChangePrice;
-    Button buttonChangeDescription;
-    Button buttonRemoveProduct;
+    ImageButton buttonChangeQuantity;
+    ImageButton buttonChangePrice;
+    ImageButton buttonChangeDescription;
+    TextView buttonRemoveProduct;
     View rootView;
 
     public static ProductDetailsFragment newInstance(Product product) {
@@ -78,8 +78,8 @@ public class ProductDetailsFragment extends Fragment {
             Toast.makeText(requireContext(), "No arguments passed to the fragment.", Toast.LENGTH_SHORT).show();
         }
 
-        ImageButton imageButtonGoBack = rootView.findViewById(R.id.buttonGoBack);
-        imageButtonGoBack.setOnClickListener(new View.OnClickListener() {
+        Button buttonGoBack = rootView.findViewById(R.id.buttonGoBack);
+        buttonGoBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 NavController navController = NavHostFragment
@@ -89,7 +89,7 @@ public class ProductDetailsFragment extends Fragment {
         });
 
 
-        Button buttonRemoveProduct = rootView.findViewById(R.id.buttonRemoveProduct);
+        TextView buttonRemoveProduct = rootView.findViewById(R.id.buttonRemoveProduct);
         buttonRemoveProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,11 +103,11 @@ public class ProductDetailsFragment extends Fragment {
     private void initializeViews(View rootView) {
 
         imageViewProduct.setImageResource(R.drawable.sample);
-        textViewProductName.setText("Name: " + product.getName());
-        textViewProductBrand.setText("Brand: " + product.getBrand());
-        textViewProductPrice.setText("Price: $ " + String.valueOf(product.getPrice()));
+        textViewProductName.setText(product.getName());
+        textViewProductBrand.setText(product.getBrand());
+        textViewProductPrice.setText("$ " + String.valueOf(product.getPrice()));
         textViewProductDescription.setText(product.getDescription());
-        textViewProductQuantity.setText("Inventory: " + String.valueOf(product.getQuantity()));
+        textViewProductQuantity.setText("Inventory Stock: " +String.valueOf(product.getQuantity()));
 
         buttonChangePrice.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -278,7 +278,7 @@ public class ProductDetailsFragment extends Fragment {
                     productSnapshot.getRef().child("quantity").setValue(Integer.parseInt(newQuantity));
                 }
                 showToast("Product quantity updated successfully.");
-                textViewProductQuantity.setText(newQuantity);
+                textViewProductQuantity.setText("Inventory Stock: " + newQuantity);
             }
 
             @Override

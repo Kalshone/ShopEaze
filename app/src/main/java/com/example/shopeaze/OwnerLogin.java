@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,7 +33,7 @@ import com.google.firebase.ktx.Firebase;
 public class OwnerLogin extends Fragment {       //owner login
 
     TextInputEditText editTextEmail, editTextPassword;
-    Button buttonLogin;
+    ImageButton buttonLogin;
     FirebaseAuth mAuth;
     ProgressBar progressBar;
     TextView textView;
@@ -61,6 +62,15 @@ public class OwnerLogin extends Fragment {       //owner login
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        Button buttonBackToWelcome = view.findViewById(R.id.buttonBackToWelcome);
+        buttonBackToWelcome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(OwnerLogin.this)
+                        .navigate(R.id.action_OwnerLogin_to_Welcome);
+            }
+        });
 
         editTextEmail = view.findViewById(R.id.email);
         editTextPassword = view.findViewById(R.id.password);

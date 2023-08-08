@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@color/navy_blue" />
-    <item android:drawable="@drawable/vector3"/>
+    <item android:drawable="@drawable/vector4" />
     <item>
         <shape android:shape="rectangle">
             <solid android:color="#99000000" />
@@ -9,9 +9,8 @@
     </item>
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="#99000000" />
+            <solid android:color="#60000000" />
         </shape>
     </item>
-    <item android:drawable="@drawable/gradient_background"></item>
 
 </layer-list>

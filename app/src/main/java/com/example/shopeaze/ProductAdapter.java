@@ -45,7 +45,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         Product product = products.get(position);
         holder.productName.setText(product.getName());
         holder.productBrand.setText(product.getBrand());
-        holder.productPrice.setText("$ " + String.valueOf(product.getPrice()));
+        //holder.productPrice.setText("$ " + String.valueOf(product.getPrice()));
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +68,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             super(itemView);
             productName = itemView.findViewById(R.id.ProductName);
             productBrand = itemView.findViewById(R.id.ProductBrand);
-            productPrice = itemView.findViewById(R.id.ProductPrice);
+            //productPrice = itemView.findViewById(R.id.ProductPrice);
         }
     }
 }

@@ -9,11 +9,28 @@
     android:padding="16dp"
     tools:context=".Login">
 
+    <Button
+        android:id="@+id/buttonBackToWelcome"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:text="Back to Welcome"
+        android:textColor="@color/navy_blue"
+        android:textSize="11sp"
+        android:fontFamily="@font/red_hat_display"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_gravity="top|end"
+        android:backgroundTint="@color/secondary_gray"
+        android:background="@drawable/rounded_button"
+        android:clipToOutline="true"/>
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="0dp"
         android:layout_marginLeft="17dp"
         android:text="Welcome to"
         android:textColor="@color/white"
@@ -71,6 +88,7 @@
             android:id="@+id/email"
             android:fontFamily="@font/red_hat_display"
             android:hint="@string/Email"
+            android:textSize="18sp"
             android:textColorHint="@color/gray"
             android:textColor="@color/secondary_gray"
             android:layout_width="match_parent"
@@ -94,6 +112,7 @@
             android:id="@+id/password"
             android:inputType="textPassword"
             android:hint="@string/Password"
+            android:textSize="18sp"
             android:fontFamily="@font/red_hat_display"
             android:textColorHint="@color/gray"
             android:textColor="@color/secondary_gray"

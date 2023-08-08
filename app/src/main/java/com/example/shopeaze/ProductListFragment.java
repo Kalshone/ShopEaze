@@ -7,15 +7,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -54,11 +59,47 @@ public class ProductListFragment extends Fragment implements AddProductDialog.On
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_product_list, container, false);
 
+        Button logoutButton = view.findViewById(R.id.logoutButton);
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                NavController navController = NavHostFragment.findNavController(ProductListFragment.this);
+                navController.navigate(R.id.action_ProductList_to_Logout);
+            }
+        });
+
+
+        ImageButton inventoryButton = view.findViewById(R.id.button_inventory);
+
+        inventoryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavController navController = NavHostFragment.findNavController(ProductListFragment.this);
+                NavDestination currentDestination = navController.getCurrentDestination();
+                if (currentDestination != null && currentDestination.getId() == R.id.ProductList) {
+                    // User is already on ProductList fragment, do nothing
+                    return;
+                }
+            }
+        });
+
+        ImageButton ordersButton = view.findViewById(R.id.button_orders);
+        // UNCOMMENT WHEN OWNER ORDERS FRAGMENT IS IMPLEMENTED
+        /*ordersButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavController navController = NavHostFragment.findNavController(ProductListFragment.this);
+                navController.navigate(R.id.action_ProductList_to_OwnerOrders);
+            }
+        });*/
+
+
         textViewStoreName = view.findViewById(R.id.textViewStoreName);
 
         recyclerView = view.findViewById(R.id.recyclerViewProducts);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
 
         products = new ArrayList<>();
         productAdapter = new ProductAdapter(getActivity(), products, this);
@@ -215,5 +256,37 @@ public class ProductListFragment extends Fragment implements AddProductDialog.On
     @Override
     public void onResume() {
         super.onResume();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        final NavController navController = NavHostFragment.findNavController(this);
+        navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
+            @Override
+            public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
+                ImageButton inventoryButton = view.findViewById(R.id.button_inventory);
+                ImageButton ordersButton = view.findViewById(R.id.button_orders);
+                TextView inventoryText = view.findViewById(R.id.textViewInventoryText);
+                TextView ordersText = view.findViewById(R.id.textViewOrderText);
+                ImageView inventoryIcon = view.findViewById(R.id.inventoryIcon);
+                ImageView ordersIcon = view.findViewById(R.id.orderIcon);
+                if (destination.getId() == R.id.ProductList) {
+                    inventoryButton.setImageResource(R.drawable.focused_nav_button);
+                    ordersButton.setImageResource(R.drawable.nav_gradient);
+                    inventoryText.setTextColor(ContextCompat.getColor(getContext(), R.color.navy_blue));
+                    ordersText.setTextColor(ContextCompat.getColor(getContext(), R.color.light_gray));
+                    inventoryIcon.setImageResource(R.drawable.black_store);
+                    ordersIcon.setImageResource(R.drawable.white_orders);
+                } /*else if (destination.getId() == R.id.OrderFragment) {
+                    inventoryButton.setImageResource(R.drawable.nav_gradient);
+                    ordersButton.setImageResource(R.drawable.focused_nav_button);
+                    inventoryText.setTextColor(ContextCompat.getColor(getContext(), R.color.light_gray));
+                    ordersText.setTextColor(ContextCompat.getColor(getContext(), R.color.navy_blue));
+                    inventoryIcon.setImageResource(R.drawable.white_store);
+                    ordersIcon.setImageResource(R.drawable.black_orders);
+                }*/ //UNCOMMENT WHEN OWNER ORDER FRAGMENT IS IMPLEMENTED
+            }
+        });
     }
 }

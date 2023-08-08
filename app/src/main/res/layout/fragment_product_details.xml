@@ -1,161 +1,201 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:background="@drawable/gradient_with_image"
+    android:paddingHorizontal="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@drawable/gradient_with_image">
+        android:orientation="vertical">
 
-        <ImageButton
+        <Button
             android:id="@+id/buttonGoBack"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="start|top"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/rounded_button"
-            android:src="@drawable/go_back_btn" />
-
-        <!-- ImageView to display the product image -->
-        <ImageView
-            android:id="@+id/imageViewProduct"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/sample"
-            android:scaleType="centerCrop"
-            android:padding="16dp"
-            android:layout_marginTop="25dp" />
-
-        <TextView
-            android:id="@+id/textViewProductName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:textColor="@android:color/white"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:text="Back to Products"
+            android:textColor="@color/navy_blue"
+            android:textSize="11sp"
+            android:fontFamily="@font/red_hat_display"
+            android:textAllCaps="false"
             android:textStyle="bold"
-            android:padding="8dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="16dp"
-            android:text="Product Name" />
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:backgroundTint="@color/secondary_gray"
+            android:background="@drawable/rounded_button"
+            android:clipToOutline="true"/>
 
-        <!-- TextView to display the product brand -->
         <TextView
-            android:id="@+id/textViewProductBrand"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textColor="@android:color/white"
-            android:padding="8dp"
-            android:layout_gravity="center_horizontal"
-            android:text="Product Brand"
-            android:textStyle="bold"/>
-
-        <!-- TextView to display the product price -->
-        <TextView
-            android:id="@+id/textViewProductPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textColor="@android:color/white"
-            android:padding="8dp"
-            android:layout_gravity="center_horizontal"
-            android:text="Product Price: $10.00"
-            android:textStyle="bold"/>
-
-        <!-- TextView to display the product description -->
-        <TextView
-            android:id="@+id/textViewProductDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:textColor="@color/light_gray"
+            android:fontFamily="@font/red_hat_display"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="25dp"
+            android:text="Manage your Product"
             android:textSize="16sp"
-            android:textColor="@android:color/white"
-            android:padding="8dp"
-            android:layout_gravity="center_horizontal"
-            android:text="Product Description: This is a great product."
-            android:textStyle="bold"/>
+            android:layout_marginBottom="20dp"/>
 
-        <!-- TextView to display the product quantity -->
-        <TextView
-            android:id="@+id/textViewProductQuantity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:textColor="@android:color/white"
-            android:padding="8dp"
-            android:layout_gravity="center_horizontal"
-            android:text="Product Quantity: 0"
-            android:textStyle="bold"/>
 
-        <!-- Buttons section -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:gravity="center"
-            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_above="@+id/buttonRemoveProduct">
 
-            <!-- Button to change the product price -->
-            <Button
-                android:id="@+id/buttonChangePrice"
-                android:layout_width="110dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="@color/turquoise"
-                android:padding="12dp"
-                android:text="Change Price"
-                android:textColor="@android:color/widget_edittext_dark"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
+                    <TextView
+                        android:id="@+id/textViewProductName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Name"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/light_gray"
+                        android:fontFamily="@font/red_hat_display" />
 
-            <!-- Button to change the product description -->
-            <Button
-                android:id="@+id/buttonChangeDescription"
-                android:layout_width="130dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="@color/turquoise"
-                android:padding="12dp"
-                android:text="Change Description"
-                android:textColor="@android:color/widget_edittext_dark"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
+                    <TextView
+                        android:id="@+id/textViewProductBrand"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="18sp"
+                        android:text="Brand"
+                        android:textColor="@color/gray"
+                        android:fontFamily="@font/red_hat_display"
+                        android:paddingBottom="20dp"/>
 
-            <!-- Button to change the product quantity -->
-            <Button
-                android:id="@+id/buttonChangeQuantity"
-                android:layout_width="110dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="@color/turquoise"
-                android:padding="12dp"
-                android:text="Change Quantity"
-                android:textColor="@android:color/widget_edittext_dark"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
+
+                    <ImageView
+                        android:id="@+id/imageViewProduct"
+                        android:layout_width="142dp"
+                        android:layout_height="195dp"
+                        android:layout_weight="1"
+                        android:scaleType="centerCrop"
+                        android:background="@drawable/rounded_corner_imageview"
+                        android:clipToOutline="true"
+                        android:adjustViewBounds="true"
+                        android:layout_gravity="center"
+                        android:src="@drawable/sample"
+                        />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp">
+
+                    <TextView
+                        android:id="@+id/textViewProductPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/light_gray"
+                        android:fontFamily="@font/red_hat_display"/>
+
+                    <ImageButton
+                        android:id="@+id/buttonChangePrice"
+                        android:layout_width="25dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="5dp"
+                        android:backgroundTint="@color/turquoise"
+                        android:src="@drawable/edit"
+                        android:scaleType="centerCrop"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/textViewProductQuantity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
+                        android:textSize="15sp"
+                        android:textColor="@color/light_gray"
+                        android:fontFamily="@font/red_hat_display"/>
+
+                    <ImageButton
+                        android:id="@+id/buttonChangeQuantity"
+                        android:layout_width="25dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="5dp"
+                        android:backgroundTint="@color/turquoise"
+                        android:src="@drawable/edit"
+                        android:scaleType="centerCrop"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:textSize="15sp"
+                    android:text="Description"
+                    android:textColor="@color/light_gray"
+                    android:fontFamily="@font/red_hat_display"/>
+
+                <ImageButton
+                    android:id="@+id/buttonChangeDescription"
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:backgroundTint="@color/turquoise"
+                    android:src="@drawable/edit"
+                    android:scaleType="centerCrop"/>
+
+                </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textViewProductDescription"
+                        android:layout_width="300dp"
+                        android:padding="15dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_height="200dp"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="12sp"
+                        android:textColor="@color/light_gray"
+                        android:fontFamily="@font/red_hat_display"
+                        android:background="@color/gray"
+                        />
+
+            </LinearLayout>
+
 
         </LinearLayout>
 
         <!-- Button to remove the product -->
-        <Button
+        <TextView
             android:id="@+id/buttonRemoveProduct"
-            android:layout_width="300dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:padding="12dp"
-            android:textSize="16sp"
-            android:textColor="@android:color/white"
-            android:backgroundTint="@android:color/holo_red_dark"
-            android:text="Remove"
-            android:layout_marginTop="50dp"
-            android:textStyle="bold"/>
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp"
+            android:text="Delete Product"
+            android:textSize="15sp"
+            android:textColor="@color/orange"
+            android:src="@drawable/add_to_cart"/>
 
-    </LinearLayout>
-</ScrollView>
+</RelativeLayout>
