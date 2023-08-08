@@ -181,6 +181,9 @@
         <action
             android:id="@+id/action_product_list_to_product_details"
             app:destination="@id/ProductDetails" />
+        <action
+            android:id="@+id/action_ProductList_to_OwnerOrders"
+            app:destination="@id/OwnerOrders" />
     </fragment>
 
     <fragment
@@ -230,6 +233,18 @@
             android:id="@+id/action_Cart_to_Orders"
             app:destination="@id/OrderFragment"/>
     </fragment>
+
+    <fragment
+        android:id="@+id/OwnerOrders"
+        android:name="com.example.shopeaze.OwnerOrders"
+        android:label="Owner Orders"
+        tools:layout="@layout/fragment_owner_orders" />
+
+    <fragment
+        android:id="@+id/OwnerProductDetails"
+        android:name="com.example.shopeaze.OwnerOrders"
+        android:label="Owner Orders"
+        tools:layout="@layout/fragment_order_product_details" />
 
 
 </navigation>
