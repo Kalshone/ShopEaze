@@ -98,7 +98,6 @@ public class OrderFragment extends Fragment {
         return view;
     }
 
-
     private void fetchOrders() {
         Log.d("OrderFragment", "Starting to fetch orders...");
         mDatabase.child(currentUserID).child("Orders").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -106,16 +105,22 @@ public class OrderFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 orders.clear();
                 int orderNumber = 1;
-                for (DataSnapshot orderSnapshot : dataSnapshot.getChildren()) {
+                for (DataSnapshot orderSnapshot : dataSnapshot.getChildren()) { // Looping through OrderId's
                     String orderId = orderSnapshot.getKey();
-                    String status = orderSnapshot.child("Status").getValue(String.class);
-                    String brand = orderSnapshot.child("cartProductBrand").getValue(String.class);
-                    Double price = orderSnapshot.child("cartProductPrice").getValue(Double.class);
-                    int quantity = orderSnapshot.child("cartQuantity").getValue(Integer.class);
-                    orders.add(new Order(String.valueOf(orderNumber), status, brand, price, quantity));
-                    orderNumber++;
-                    Log.d("OrderFragment", "OrderID: " + orderId + ", Status: " + status); // Logging each order's status
+
+                    for (DataSnapshot productSnapshot : orderSnapshot.getChildren()) { // Looping through ProductId's
+                        String productId = productSnapshot.getKey();
+                        String status = productSnapshot.child("status").getValue(String.class);
+                        String brand = productSnapshot.child("cartProductBrand").getValue(String.class);
+                        Double price = productSnapshot.child("cartProductPrice").getValue(Double.class);
+                        Integer quantity = productSnapshot.child("cartQuantity").getValue(Integer.class);
+
+                        orders.add(new Order(String.valueOf(orderNumber), status, brand, price, quantity));
+                        orderNumber++;
+                        Log.d("OrderFragment", "OrderID: " + orderId + ", ProductID: " + productId + ", Status: " + status); // Logging each order's status
+                    }
                 }
+
                 ordersAdapter = new OrdersAdapter(orders);
                 orderList.setAdapter(ordersAdapter);
                 ordersAdapter.notifyDataSetChanged();
@@ -132,6 +137,7 @@ public class OrderFragment extends Fragment {
             }
         });
     }
+
 
 
 
