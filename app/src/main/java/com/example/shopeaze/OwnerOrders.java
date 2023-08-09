@@ -94,25 +94,25 @@ public class OwnerOrders extends Fragment {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for(DataSnapshot orderSnapshot : snapshot.getChildren()){
+                            Log.d("OrderID", orderSnapshot.getKey());
                             String orderID = orderSnapshot.getKey();
-                            String status = orderSnapshot.child("Status").getValue(String.class);
                             String shopperEmail = orderSnapshot.child("Shopper Email").getValue(String.class);
                             productList = new ArrayList<>();
-                            for(DataSnapshot productSnapshot : orderSnapshot.child("Items").getChildren()){
-                                String sto = productSnapshot.child("Store Name").getValue(String.class);
-                                String name = productSnapshot.child("Name").getValue(String.class);
-                                String brand = productSnapshot.child("Brand").getValue(String.class);
-                                double price = productSnapshot.child("Price").getValue(Double.class);
-                                String description = productSnapshot.child("Description").getValue(String.class);
-                                int quantity = productSnapshot.child("Quantity").getValue(Integer.class);
-                                if(sto.equals(storeName)){
-                                    Product product = new Product(name, brand, price, description,
-                                            quantity, null, status, storeName, null);
-                                    productList.add(product);
-                                }
+                            for(DataSnapshot productSnapshot : orderSnapshot.getChildren()){
+                                String storeId = productSnapshot.child("storeID").getValue(String.class);
+                                String brand = productSnapshot.child("cartProductBrand").getValue(String.class);
+                                String cartproductID = productSnapshot.child("cartProductID").getValue(String.class);
+                                String name = productSnapshot.child("cartProductName").getValue(String.class);
+                                int quantity = productSnapshot.child("cartQuantity").getValue(Integer.class);
+                                String status = productSnapshot.child("status").getValue(String.class);
+                                double price = productSnapshot.child("cartProductPrice").getValue(Double.class);
+                                String image = null;
+                                Product product = new Product(name, brand, price, null, quantity, status, null, storeId, cartproductID);
+                                productList.add(product);
+
                             }
                             if(productList.size() > 0){
-                                orderList.add(new Order(shopperEmail, status, productList));
+                                orderList.add(new Order(shopperEmail, null, productList));
                             }
                             printOrderList();
                         }

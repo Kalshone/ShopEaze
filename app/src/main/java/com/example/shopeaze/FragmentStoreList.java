@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,6 +25,11 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
@@ -33,6 +39,8 @@ public class FragmentStoreList extends Fragment implements StoreAdapter.OnItemCl
 
     private List<Store> stores;
     private StoreAdapter adapter;
+
+    private FirebaseAuth mAuth;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -44,6 +52,8 @@ public class FragmentStoreList extends Fragment implements StoreAdapter.OnItemCl
         recyclerViewStores.setLayoutManager(new GridLayoutManager(getActivity(), 2));
 
         final StoreList storeList = new StoreList();
+        mAuth = FirebaseAuth.getInstance();
+        isShopper();
         storeList.setOnStoresLoadedListener(new StoreList.OnStoresLoadedListener() {
             @Override
             public void onStoresLoaded(List<Store> stores) {
@@ -98,6 +108,28 @@ public class FragmentStoreList extends Fragment implements StoreAdapter.OnItemCl
         });
 
         return rootView;
+    }
+    public void isShopper(){
+        String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users").child("StoreOwner").child(user);
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    NavController navController = NavHostFragment.findNavController(FragmentStoreList.this);
+                    navController.navigate(R.id.action_StoreList_to_WelcomeScreen);
+                    Toast.makeText(getActivity(), "You are a store owner", Toast.LENGTH_SHORT).show();
+                }
+                else{
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override
