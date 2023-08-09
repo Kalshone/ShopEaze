@@ -6,7 +6,8 @@
         <item name="android:windowFullscreen">true</item>
 
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<!--         <item name="colorPrimary">@color/#AB8971</item>-->
+
     </style>
 
     <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
