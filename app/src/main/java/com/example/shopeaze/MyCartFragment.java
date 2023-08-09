@@ -179,11 +179,13 @@ public class MyCartFragment extends Fragment {
         DatabaseReference shopperRef = usersRef.child("Shoppers").child(userID);
         DatabaseReference ordersRef = shopperRef.child("Orders");
         DatabaseReference newOrderRef = ordersRef.push();
+        String orderKey = newOrderRef.getKey();
+        Log.d("MyCartFrgament", "OrderKey is" + orderKey);
 
         // add each cart item in the list to the Orders database under a single order ID
         for (CartItem cartItem : cartItems) {
             cartItem.setStatus("Received");
-            newOrderRef.push().setValue(cartItem);
+            newOrderRef.child(cartItem.getcartProductID()).setValue(cartItem);
         }
 
         // owners side
@@ -198,12 +200,13 @@ public class MyCartFragment extends Fragment {
         }
 
         for (String storeID : storesList) {
+            Log.d("MyCartFrgament", "Processing for storeID " + storeID);
             if (storeID != null) {
                 // go into the store owner with the current storeID and add all cartItems with that storeID to the Orders database
                 for (CartItem cartItem : cartItems) {
                     if (cartItem.getStoreID().equals(storeID)) {
-                        DatabaseReference newOrderRef2 = storeOwnerRef.child(storeID).child("Orders").push();
-                        newOrderRef2.push().setValue(cartItem);
+                        DatabaseReference newOrderRef2 = storeOwnerRef.child(storeID).child("Orders").child(orderKey);
+                        newOrderRef2.child(cartItem.getcartProductID()).setValue(cartItem);
                     }
                 }
             }

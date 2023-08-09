@@ -194,7 +194,7 @@
             app:destination="@id/ProductDetails" />
         <action
             android:id="@+id/action_ProductList_to_OwnerOrders"
-            app:destination="@id/OwnerOrders" />
+            app:destination="@id/OwnerOrders"/>
         <action
             android:id="@+id/action_ProductList_to_ShopperHome"
             app:destination="@id/ShopperProductDetails" />
@@ -251,6 +251,7 @@
             app:destination="@id/Order_confirmation"/>
     </fragment>
 
+
     <fragment
         android:id="@+id/Order_confirmation"
         android:name="com.example.shopeaze.OrderConfirm"
@@ -271,7 +272,14 @@
         android:id="@+id/OwnerOrders"
         android:name="com.example.shopeaze.OwnerOrders"
         android:label="Owner Orders"
-        tools:layout="@layout/fragment_owner_orders" />
+        tools:layout="@layout/fragment_owner_orders">
+
+        <action
+            android:id="@+id/action_OwnerOrders_to_ProductList"
+            app:destination="@id/ProductList"/>
+
+    </fragment>
+
 
 
 

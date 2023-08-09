@@ -12,6 +12,8 @@ public class Order {
     private List<Product> products;
 
     // Constructor
+    public Order(){};
+
     public Order(String orderNumber, String status, String cartProductBrand,
                  Double cartProductPrice, int cartQuantity) {
         this.orderNumber = orderNumber;
@@ -21,6 +23,12 @@ public class Order {
         this.cartQuantity = cartQuantity;
     }
 
+    public Order(String orderNumber, List<Product> products) {
+        this.orderNumber = orderNumber;
+        this.products = products;
+    }
+
+
     public Order(String orderNumber, String status, List<Product> products) {
         this.orderNumber = orderNumber;
         this.status = status;
@@ -28,6 +36,7 @@ public class Order {
     }
 
     // Getters
+
     public String getOrderNumber() {
         return orderNumber;
     }
@@ -49,6 +58,7 @@ public class Order {
     }
 
     // Setters
+
     public void setOrderNumber(String orderNumber) {
         this.orderNumber = orderNumber;
     }

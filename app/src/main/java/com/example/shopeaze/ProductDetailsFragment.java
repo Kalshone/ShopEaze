@@ -4,9 +4,11 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -168,7 +170,7 @@ public class ProductDetailsFragment extends Fragment {
     }
 
     private void showChangePriceDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext(), R.style.RoundedDialog);
         builder.setTitle("Change Price")
                 .setView(R.layout.dialog_change_price)
                 .setPositiveButton("Save", new DialogInterface.OnClickListener() {
@@ -189,8 +191,16 @@ public class ProductDetailsFragment extends Fragment {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
                     }
-                })
-                .show();
+                });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+
+        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+        layoutParams.copyFrom(alertDialog.getWindow().getAttributes());
+        layoutParams.width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 300, getResources().getDisplayMetrics());
+        layoutParams.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 200, getResources().getDisplayMetrics());
+        alertDialog.getWindow().setAttributes(layoutParams);
+
     }
 
     private void showChangeDescriptionDialog(String initialDescription) {

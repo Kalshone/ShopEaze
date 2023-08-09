@@ -72,7 +72,7 @@ public class ProductListFragment extends Fragment implements AddProductDialog.On
             }
         });
 
-        ImageButton orderButton = view.findViewById(R.id.button_orders);
+        /*ImageButton orderButton = view.findViewById(R.id.button_orders);
 
         orderButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,7 +80,7 @@ public class ProductListFragment extends Fragment implements AddProductDialog.On
                 NavController navController = NavHostFragment.findNavController(ProductListFragment.this);
                 navController.navigate(R.id.action_ProductList_to_OwnerOrders);
             }
-        });
+        });*/
 
 
         ImageButton inventoryButton = view.findViewById(R.id.button_inventory);
@@ -98,14 +98,13 @@ public class ProductListFragment extends Fragment implements AddProductDialog.On
         });
 
         ImageButton ordersButton = view.findViewById(R.id.button_orders);
-        // UNCOMMENT WHEN OWNER ORDERS FRAGMENT IS IMPLEMENTED
-        /*ordersButton.setOnClickListener(new View.OnClickListener() {
+        ordersButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 NavController navController = NavHostFragment.findNavController(ProductListFragment.this);
                 navController.navigate(R.id.action_ProductList_to_OwnerOrders);
             }
-        });*/
+        });
 
 
         textViewStoreName = view.findViewById(R.id.textViewStoreName);
@@ -317,14 +316,14 @@ public class ProductListFragment extends Fragment implements AddProductDialog.On
                     ordersText.setTextColor(ContextCompat.getColor(getContext(), R.color.light_gray));
                     inventoryIcon.setImageResource(R.drawable.black_store);
                     ordersIcon.setImageResource(R.drawable.white_orders);
-                } /*else if (destination.getId() == R.id.OrderFragment) {
+                } else if (destination.getId() == R.id.OwnerOrders) {
                     inventoryButton.setImageResource(R.drawable.nav_gradient);
                     ordersButton.setImageResource(R.drawable.focused_nav_button);
                     inventoryText.setTextColor(ContextCompat.getColor(getContext(), R.color.light_gray));
                     ordersText.setTextColor(ContextCompat.getColor(getContext(), R.color.navy_blue));
                     inventoryIcon.setImageResource(R.drawable.white_store);
                     ordersIcon.setImageResource(R.drawable.black_orders);
-                }*/ //UNCOMMENT WHEN OWNER ORDER FRAGMENT IS IMPLEMENTED
+                }
             }
         });
     }

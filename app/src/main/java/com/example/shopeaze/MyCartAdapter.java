@@ -59,6 +59,7 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.MyViewHold
         Log.d("MyCartAdapter", "Quantity: " + cartItem.getCartQuantity());
         Log.d("MyCartAdapter", "ID: " + cartItem.getcartProductID());
         Log.d("MyCartAdapter", "Status: " + cartItem.getStatus());
+        Log.d("MyCartAdapter", "StoreID: " + cartItem.getStoreID());
 
         holder.cartProductName.setText(cartItem.getcartProductName());
         holder.cartProductPrice.setText("$ " + String.valueOf(cartItem.getcartProductPrice()));

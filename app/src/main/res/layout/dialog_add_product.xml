@@ -4,7 +4,8 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="@color/darker_transparent_cardview_color">
+    android:background="@color/navy_blue"
+    android:clipToOutline="true">
 
     <EditText
         android:id="@+id/editTextProductName"

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -64,6 +66,11 @@ public class ShopperProductDetailsFragment extends Fragment {
         TextView textViewStoreName = rootView.findViewById(R.id.textViewStoreName);
         textViewStoreName.setText(store.getStoreName());
 
+        ImageView imageViewProduct = rootView.findViewById(R.id.imageViewProduct);
+        Glide.with(this)
+                .load(product.getImage())
+                .into(imageViewProduct);
+
         // Display product details
         TextView productNameTextView = rootView.findViewById(R.id.textViewProductName);
         productNameTextView.setText(product.getName());
@@ -88,7 +95,10 @@ public class ShopperProductDetailsFragment extends Fragment {
         return rootView;
     }
     private void addToCart(Product product) {
-        CartItem cartItem = new CartItem(product);
+        Product product2 = new Product(product.getName(), product.getBrand(), product.getPrice(), product.getQuantity(), product.getStatus(), store.getStoreID(), product.getProductID());
+        Log.d("ShopperPorductdetailsFragment", "StoreID is " + store.getStoreID());
+        Log.d("ShopperPorductdetailsFragment", "StoreID is " + product2.getStoreID());
+        CartItem cartItem = new CartItem(product2);
         String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("Users");
         DatabaseReference shopperRef = usersRef.child("Shoppers").child(userID);
