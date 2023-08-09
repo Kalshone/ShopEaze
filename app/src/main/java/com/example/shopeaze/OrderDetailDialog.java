@@ -29,10 +29,12 @@ public class OrderDetailDialog extends DialogFragment {
         TextView brandTextView = view.findViewById(R.id.brand_text);
         TextView priceTextView = view.findViewById(R.id.price_text);
         TextView quantityTextView = view.findViewById(R.id.quantity_text);
+        TextView nameTextView = view.findViewById(R.id.name_text);
 
         brandTextView.setText(order.getCartProductBrand());
         priceTextView.setText(String.valueOf(order.getCartProductPrice()));
         quantityTextView.setText(String.valueOf(order.getCartQuantity()));
+        nameTextView.setText(String.valueOf(order.getCartProductName()));
 
         builder.setView(view)
                 .setTitle("Order Detail")

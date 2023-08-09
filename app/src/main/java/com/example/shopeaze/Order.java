@@ -9,18 +9,21 @@ public class Order {
     private Double cartProductPrice;
     private int cartQuantity;
 
+    private String cartProductName;
+
     private List<Product> products;
 
     // Constructor
     public Order(){};
 
     public Order(String orderNumber, String status, String cartProductBrand,
-                 Double cartProductPrice, int cartQuantity) {
+                 Double cartProductPrice, int cartQuantity, String cartProductName) {
         this.orderNumber = orderNumber;
         this.status = status;
         this.cartProductBrand = cartProductBrand;
         this.cartProductPrice = cartProductPrice;
         this.cartQuantity = cartQuantity;
+        this.cartProductName = cartProductName;
     }
 
     public Order(String orderNumber, List<Product> products) {
@@ -56,6 +59,8 @@ public class Order {
     public int getCartQuantity() {
         return cartQuantity;
     }
+
+    public String getCartProductName() { return cartProductName; }
 
     // Setters
 
