@@ -76,7 +76,7 @@
 
                 <TextView
                     android:id="@+id/textViewProductPrice"
-                    android:layout_width="80dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
                     android:gravity="center_vertical"
@@ -108,7 +108,7 @@
 
                 <TextView
                     android:id="@+id/textViewProductQuantity"
-                    android:layout_width="80dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="@string/inventory"
                     android:layout_gravity="center_horizontal"
@@ -131,14 +131,14 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="134dp"
+                android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="80dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
                     android:fontFamily="@font/red_hat_display"
