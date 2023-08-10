@@ -22,6 +22,7 @@ public class Login extends Fragment implements LoginContract.View {
     ImageButton buttonLogin;
     ProgressBar progressBar;
     TextView textView;
+
     private LoginContract.Presenter presenter;
 
     @Nullable

@@ -58,7 +58,7 @@ public class CartItem {
         return storeID;
     }
 
-    //Necessary setters:
+    //Setters:
     public void setcartProductID(String productID) {
         this.cartProductID = productID;
     }

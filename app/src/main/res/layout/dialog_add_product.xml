@@ -10,53 +10,58 @@
     <EditText
         android:id="@+id/editTextProductName"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Product Name"
+        android:layout_height="48dp"
+        android:hint="@string/product_name"
+        android:singleLine="true"
         android:textColor="@color/white"
         style="@style/AppTheme"/>
 
     <EditText
         android:id="@+id/editTextProductBrand"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Product Brand"
+        android:layout_height="48dp"
+        android:hint="@string/product_brand"
+        android:singleLine="true"
         android:textColor="@color/white"
         style="@style/AppTheme"/>
 
     <EditText
         android:id="@+id/editTextProductPrice"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:inputType="numberDecimal"
-        android:hint="Product Price"
+        android:hint="@string/product_price"
+        android:singleLine="true"
         android:textColor="@color/white"
         style="@style/AppTheme"/>
 
     <EditText
         android:id="@+id/editTextProductQuantity"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:inputType="number"
-        android:hint="Product Quantity"
+        android:hint="@string/product_quantity"
+        android:singleLine="true"
         android:textColor="@color/white"
         style="@style/AppTheme"/>
 
     <EditText
         android:id="@+id/editTextProductDescription"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:inputType="textMultiLine"
-        android:hint="Product Description"
+        android:hint="@string/product_description"
+        android:singleLine="true"
         android:textColor="@color/white"
         style="@style/AppTheme"/>
 
     <EditText
         android:id="@+id/editTextProductImage"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Image URL"
+        android:layout_height="48dp"
+        android:hint="@string/image_url"
+        android:singleLine="true"
         android:inputType="text"
-        android:layout_marginTop="8dp"
         android:textColor="@color/white"
         style="@style/AppTheme"/>
 

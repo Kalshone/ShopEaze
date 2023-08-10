@@ -33,10 +33,11 @@
 
             <TextView
                 android:id="@+id/cartProductName"
-                android:layout_width="wrap_content"
+                android:layout_width="105dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Product Name is very long"
+                android:singleLine="true"
+                android:text="Product Name"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -45,6 +46,7 @@
                 android:id="@+id/cartProductBrand"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:singleLine="true"
                 android:text="Product Brand"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="14sp" />
@@ -53,6 +55,7 @@
                 android:id="@+id/cartProductPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:singleLine="true"
                 android:text="Price: $19.99"
                 android:textColor="@color/turquoise"
                 android:textSize="16sp"
@@ -62,6 +65,7 @@
                 android:id="@+id/productQuantity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:singleLine="true"
                 android:text="Quantity: 1"
                 android:textColor="@color/light_gray"
                 android:textSize="16sp"
@@ -96,5 +100,4 @@
             android:text="Remove"
             android:textColor="@android:color/white" />
     </LinearLayout>
-
 </RelativeLayout>

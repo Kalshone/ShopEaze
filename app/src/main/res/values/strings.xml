@@ -18,7 +18,42 @@
     <string name="store_name">Store Name</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="cart">Cart</string>
+    <string name="orders">Orders</string>
+    <string name="hi">Hi</string>
+    <string name="shopper">Shopper</string>
+    <string name="logout">Logout</string>
+    <string name="stores">Stores</string>
+    <string name="browse_through_stores">Browse through stores</string>
+    <string name="checkout">Checkout</string>
+    <string name="existing_users">Existing Users</string>
+    <string name="eaze">EAZE</string>
+    <string name="shop">Shop</string>
+    <string name="welcome_to">Welcome to</string>
+    <string name="back_to_welcome">Back to Welcome</string>
+    <string name="back_to_stores">Back to Stores</string>
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="image_of_product">Image of Product</string>
+    <string name="back_to_login">Back to Login</string>
+    <string name="new_users">New Users</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="product_brand">Product Brand</string>
+    <string name="product_name">Product Name</string>
+    <string name="product_description">Product Description</string>
+    <string name="image_url">Image URL</string>
+    <string name="product_price">Product Price</string>
+    <string name="product_quantity">Product Quantity</string>
+    <string name="refresh">Refresh</string>
+    <string name="back_to_products">Back to Products</string>
+    <string name="manage_your_product">Manage your Product</string>
+    <string name="delete_product">Delete Product</string>
+    <string name="manage_your_inventory">Manage your Inventory</string>
+    <string name="add_a_product">Add a Product</string>
+    <string name="inventory">Inventory</string>
+    <string name="shopeaze_logo">ShopEaze Logo</string>
+    <string name="i_m_a_shopper">I\'m a Shopper</string>
+    <string name="i_m_a_store_owner">I\'m a Store Owner</string>
+    <string name="status">Status:</string>
     <string-array name="order_statuses">
         <item>Received</item>
         <item>Processed</item>

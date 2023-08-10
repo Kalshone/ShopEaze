@@ -120,9 +120,6 @@ public class FragmentStoreList extends Fragment implements StoreAdapter.OnItemCl
                     navController.navigate(R.id.action_StoreList_to_WelcomeScreen);
                     Toast.makeText(getActivity(), "You are a store owner", Toast.LENGTH_SHORT).show();
                 }
-                else{
-
-                }
             }
 
             @Override

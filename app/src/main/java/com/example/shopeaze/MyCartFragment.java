@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
@@ -140,37 +141,42 @@ public class MyCartFragment extends Fragment {
             }
         });
 
-        // NEW
-
         Button checkoutButton = root.findViewById(R.id.CheckoutButton);
         checkoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 NavController navController = NavHostFragment.findNavController(MyCartFragment.this);
-                navController.navigate(R.id.action_Cart_to_order_confirm);
+                navController.navigate(R.id.action_Cart_to_StoreList);
 
-                addToOrders(products);
+                if (products.isEmpty()) {
+                    Toast.makeText(getActivity(), "Your cart is empty!", Toast.LENGTH_SHORT).show();
+                    return;
+                }else {
+                    addToOrders(products);
+                    Toast.makeText(getActivity(), "Your order is on it's way!", Toast.LENGTH_SHORT).show();
 
-                // go through all cart items, and for each one, delete it from the cart
-                DatabaseReference productRef = FirebaseDatabase.getInstance().getReference()
-                        .child("Users")
-                        .child("Shoppers")
-                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                        .child("Cart");
+                    // go through all cart items, and for each one, delete it from the cart
+                    DatabaseReference productRef = FirebaseDatabase.getInstance().getReference()
+                            .child("Users")
+                            .child("Shoppers")
+                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                            .child("Cart");
 
-                productRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for (DataSnapshot productSnapshot : snapshot.getChildren()) {
-                            productSnapshot.getRef().removeValue();
+                    productRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            for (DataSnapshot productSnapshot : snapshot.getChildren()) {
+                                productSnapshot.getRef().removeValue();
+                            }
                         }
-                    }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Log.d("MyCartAdapter", "onCancelled", error.toException());
-                    }
-                });
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Log.d("MyCartAdapter", "onCancelled", error.toException());
+                        }
+                    });
+                }
+
 
             }
         });
@@ -211,7 +217,6 @@ public class MyCartFragment extends Fragment {
         for (String storeID : storesList) {
             Log.d("MyCartFrgament", "Processing for storeID " + storeID);
             if (storeID != null) {
-                // go into the store owner with the current storeID and add all cartItems with that storeID to the Orders database
                 for (CartItem cartItem : cartItems) {
                     if (cartItem.getStoreID().equals(storeID)) {
                         DatabaseReference newOrderRef2 = storeOwnerRef.child(storeID).child("Orders").child(orderKey);

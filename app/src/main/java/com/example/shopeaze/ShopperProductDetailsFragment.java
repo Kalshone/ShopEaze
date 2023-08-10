@@ -69,6 +69,8 @@ public class ShopperProductDetailsFragment extends Fragment {
         ImageView imageViewProduct = rootView.findViewById(R.id.imageViewProduct);
         Glide.with(this)
                 .load(product.getImage())
+                .placeholder(R.drawable.placeholder_image)
+                .error(R.drawable.error_image)
                 .into(imageViewProduct);
 
         // Display product details
@@ -95,7 +97,9 @@ public class ShopperProductDetailsFragment extends Fragment {
         return rootView;
     }
     private void addToCart(Product product) {
-        Product product2 = new Product(product.getName(), product.getBrand(), product.getPrice(), product.getQuantity(), product.getStatus(), store.getStoreID(), product.getProductID());
+        Product product2 = new Product(product.getName(), product.getBrand(), product.getPrice(),
+                product.getQuantity(), product.getStatus(), store.getStoreID(),
+                product.getProductID(), product.getImage());
         Log.d("ShopperPorductdetailsFragment", "StoreID is " + store.getStoreID());
         Log.d("ShopperPorductdetailsFragment", "StoreID is " + product2.getStoreID());
         CartItem cartItem = new CartItem(product2);

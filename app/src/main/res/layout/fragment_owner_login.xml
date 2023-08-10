@@ -9,33 +9,18 @@
     android:padding="16dp"
     tools:context=".OwnerLogin">
 
-    <Button
-        android:id="@+id/buttonBackToWelcome"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:text="Back to Welcome"
-        android:textColor="@color/navy_blue"
-        android:textSize="11sp"
-        android:fontFamily="@font/red_hat_display"
-        android:textAllCaps="false"
-        android:textStyle="bold"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="10dp"
-        android:layout_gravity="top|end"
-        android:backgroundTint="@color/secondary_gray"
-        android:background="@drawable/rounded_button"
-        android:clipToOutline="true"/>
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:layout_marginLeft="17dp"
-        android:text="Welcome to"
+        android:layout_marginBottom="-10dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/red_hat_display"
+        android:text="@string/welcome_to"
         android:textColor="@color/white"
-        android:textSize="20sp"
-        android:fontFamily="@font/red_hat_display"/>
+        android:textSize="20sp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -46,32 +31,50 @@
             android:id="@+id/textviewShop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="17dp"
-            android:text="Shop"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/shop"
             android:textColor="@color/white"
             android:textSize="32sp"
             android:fontFamily="@font/red_hat_display"/>
+
 
         <TextView
             android:id="@+id/textviewEAZE"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="EAZE"
+            android:text="@string/eaze"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="3dp"
             android:textColor="@color/turquoise"
-            android:layout_marginLeft="2dp"
             android:textSize="32sp"
             android:textStyle="bold"
             android:fontFamily="@font/red_hat_display"/>
 
+        <Button
+            android:id="@+id/buttonBackToWelcome"
+            android:layout_width="100dp"
+            android:layout_height="48dp"
+            android:layout_gravity="top|end"
+            android:layout_marginStart="85dp"
+            android:background="@drawable/rounded_button"
+            android:backgroundTint="@color/turquoise_shadow"
+            android:clipToOutline="true"
+            android:fontFamily="@font/red_hat_display"
+            android:text="@string/back_to_welcome"
+            android:textAllCaps="false"
+            android:textColor="@color/light_gray"
+            android:textSize="14sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <TextView
-        android:text="Existing Users"
+        android:text="@string/existing_users"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@color/secondary_gray"
         android:fontFamily="@font/red_hat_display"
-        android:layout_marginLeft="17dp"
+        android:layout_marginStart="17dp"
         android:layout_marginTop="87dp"
         android:layout_marginBottom="20dp"
         android:layout_width="wrap_content"
@@ -88,11 +91,12 @@
             android:id="@+id/email"
             android:fontFamily="@font/red_hat_display"
             android:hint="@string/Email"
+            android:singleLine="true"
             android:textSize="18sp"
             android:textColorHint="@color/gray"
             android:textColor="@color/secondary_gray"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="48dp">
 
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
@@ -101,6 +105,7 @@
     -->
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="353dp"
+
         android:layout_height="wrap_content"
         android:backgroundTint="@color/gray"
         app:boxStrokeColor="@color/primary_blue"
@@ -113,11 +118,12 @@
             android:inputType="textPassword"
             android:hint="@string/Password"
             android:textSize="18sp"
+            android:singleLine="true"
             android:fontFamily="@font/red_hat_display"
             android:textColorHint="@color/gray"
             android:textColor="@color/secondary_gray"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="48dp">
 
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
@@ -137,9 +143,10 @@
 
         <ImageButton
             android:id="@+id/btn_login"
-            android:text="Login"
+            android:text="@string/login"
             android:layout_width="300dp"
             android:layout_height="60dp"
+            android:contentDescription="@string/login"
             android:src="@drawable/gradient_button"
             android:clipToOutline="true"
             android:scaleType="centerCrop"
@@ -150,7 +157,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="@font/red_hat_display"
-            android:text="Login"
+            android:text="@string/login"
             android:gravity="center"
             android:textColor="@color/navy_blue"
             android:textSize="18sp"

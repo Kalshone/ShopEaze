@@ -72,17 +72,6 @@ public class ProductListFragment extends Fragment implements AddProductDialog.On
             }
         });
 
-        /*ImageButton orderButton = view.findViewById(R.id.button_orders);
-
-        orderButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NavController navController = NavHostFragment.findNavController(ProductListFragment.this);
-                navController.navigate(R.id.action_ProductList_to_OwnerOrders);
-            }
-        });*/
-
-
         ImageButton inventoryButton = view.findViewById(R.id.button_inventory);
 
         inventoryButton.setOnClickListener(new View.OnClickListener() {
@@ -105,7 +94,6 @@ public class ProductListFragment extends Fragment implements AddProductDialog.On
                 navController.navigate(R.id.action_ProductList_to_OwnerOrders);
             }
         });
-
 
         textViewStoreName = view.findViewById(R.id.textViewStoreName);
 
@@ -246,14 +234,12 @@ public class ProductListFragment extends Fragment implements AddProductDialog.On
                 if (storeName != null) {
                     textViewStoreName.setText(storeName);
                 } else {
-                    showToast("Store name not found");
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                String errorMessage = "Error fetching store name: " + databaseError.getMessage();
-                showToast(errorMessage);
+                //
             }
         });
     }

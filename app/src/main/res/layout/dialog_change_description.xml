@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
         android:hint="Enter new description"
+        android:singleLine="true"
         android:padding="8dp"
         android:background="@drawable/gradient_button"
         android:textColorHint="@color/black"

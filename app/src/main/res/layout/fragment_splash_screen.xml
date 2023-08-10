@@ -10,7 +10,7 @@
         android:layout_width="500dp"
         android:layout_height="250dp"
         android:src="@drawable/shopeaze"
-        android:contentDescription="ShopEaze Logo"
+        android:contentDescription="@string/shopeaze_logo"
         android:layout_gravity="center"
         android:visibility="invisible" />
 

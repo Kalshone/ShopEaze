@@ -29,7 +29,7 @@ public class Product implements Serializable {
         this.storeID = storeID;
     }
 
-    public Product(String name, String brand, double price, int quantity, String status, String storeID, String productID){
+    public Product(String name, String brand, double price, int quantity, String status, String storeID, String productID, String imageURL){
         this.productID = productID;
         this.productName = name;
         this.productBrand = brand;
@@ -37,6 +37,7 @@ public class Product implements Serializable {
         this.status = status;
         this.quantity = quantity;
         this.storeID = storeID;
+        this.imageURL = imageURL;
     }
 
     public Product(String name, String brand, double price,

@@ -35,7 +35,7 @@ public class LoginPresenter implements LoginContract.Presenter {
             @Override
             public void onLoginSuccess() {
                 view.hideProgressBar();
-                view.showLoginSuccessMessage();
+//                view.showLoginSuccessMessage();
                 view.navigateToStoreList();
             }
             @Override

@@ -12,20 +12,20 @@
         <Button
             android:id="@+id/buttonBackToProducts"
             android:layout_width="100dp"
-            android:layout_height="30dp"
-            android:text="Back to Products"
-            android:textColor="@color/navy_blue"
-            android:textSize="11sp"
-            android:fontFamily="@font/red_hat_display"
-            android:textAllCaps="false"
-            android:textStyle="bold"
+            android:layout_height="48dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="10dp"
-            android:backgroundTint="@color/secondary_gray"
             android:background="@drawable/rounded_button"
-            android:clipToOutline="true"/>
+            android:backgroundTint="@color/turquoise_shadow"
+            android:clipToOutline="true"
+            android:fontFamily="@font/red_hat_display"
+            android:text="@string/back_to_products"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="11sp"
+            android:textStyle="bold" />
 
-    <include
+        <include
         layout="@layout/item_store"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,8 +35,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonAddToCart">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -46,22 +45,23 @@
 
             <ImageView
                 android:id="@+id/imageViewProduct"
-                android:layout_width="280dp"
-                android:layout_height="383dp"
+                android:layout_width="274dp"
+                android:layout_height="323dp"
+                android:layout_gravity="center"
                 android:layout_weight="1"
-                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
                 android:background="@drawable/rounded_corner_productview"
                 android:clipToOutline="true"
-                android:adjustViewBounds="true"
-                android:layout_gravity="center"
-                android:src="@drawable/sample"
-               />
+                android:contentDescription="@string/image_of_product"
+                android:scaleType="centerCrop"
+                android:src="@drawable/sample" />
 
             <TextView
                 android:id="@+id/textViewProductName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:singleLine="true"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="@color/light_gray"
@@ -74,6 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textSize="15sp"
+                android:singleLine="true"
                 android:textColor="@color/gray"
                 android:fontFamily="@font/red_hat_display"
                 android:paddingBottom="20dp"/>
@@ -84,7 +85,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textSize="25sp"
+                android:singleLine="true"
                 android:textStyle="bold"
+                android:layout_marginTop="-10dp"
                 android:textColor="@color/light_gray"
                 android:fontFamily="@font/red_hat_display"/>
 
@@ -94,6 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textSize="16sp"
+                android:layout_marginTop="10dp"
                 android:textColor="@color/gray"
                 android:textAlignment="center"
                 android:fontFamily="@font/red_hat_display"/>
@@ -112,7 +116,8 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="25dp"
-        android:text="Add to Cart"
+        android:text="@string/add_to_cart"
+        android:contentDescription="@string/cart"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@color/navy_blue"

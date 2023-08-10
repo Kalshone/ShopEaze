@@ -45,13 +45,7 @@ public class OwnerLogin extends Fragment {
         super.onStart();
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseDatabase.getInstance("https://grocery-d4fbb-default-rtdb.firebaseio.com//");
-        // Check if user is already signed in (non-null)
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        //Check if current user is a shopper or a seller
-        if(currentUser != null){
-            NavHostFragment.findNavController(OwnerLogin.this)
-                    .navigate(R.id.action_ownerLogin_to_ProductList);
-        }
     }
 
     @Nullable

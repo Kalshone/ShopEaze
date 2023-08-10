@@ -15,6 +15,8 @@
     <color name="light_blue">#ADD8E6</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="darker_transparent_cardview_color">#B3000000</color>
+    <color name="turquoise_shadow">#40808080</color>
+
 </resources>
 
 
