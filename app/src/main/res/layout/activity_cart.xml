@@ -4,12 +4,45 @@
     android:background="@drawable/vector2_background"
     android:paddingHorizontal="10dp">
 
+    <LinearLayout
+        android:id="@+id/myCartText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="0dp"
+            android:text="My"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            android:fontFamily="@font/red_hat_display"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cart"
+            android:layout_marginTop="0dp"
+            android:layout_marginLeft="6dp"
+            android:textColor="@color/turquoise"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/red_hat_display"/>
+
+    </LinearLayout>
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerCartView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/navigationBar"
-        android:layout_marginBottom="-1dp" />
+        android:layout_marginBottom="-1dp"
+        android:layout_below="@id/myCartText"/>
 
     <Button
         android:id="@+id/CheckoutButton"

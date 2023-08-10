@@ -178,17 +178,17 @@
 
     </LinearLayout>
 
-        <!-- Button to remove the product -->
-        <TextView
-            android:id="@+id/buttonRemoveProduct"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="20dp"
-            android:text="@string/delete_product"
-            android:textSize="15sp"
-            android:textColor="@color/orange"
-            android:src="@drawable/add_to_cart"/>
+    <!-- Button to remove the product -->
+    <TextView
+        android:id="@+id/buttonRemoveProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:text="@string/delete_product"
+        android:textSize="15sp"
+        android:textColor="@color/orange"
+        android:src="@drawable/add_to_cart"/>
 
 </RelativeLayout>

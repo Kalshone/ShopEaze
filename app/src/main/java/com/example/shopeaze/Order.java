@@ -31,7 +31,6 @@ public class Order {
         this.products = products;
     }
 
-
     public Order(String orderNumber, String status, List<Product> products) {
         this.orderNumber = orderNumber;
         this.status = status;

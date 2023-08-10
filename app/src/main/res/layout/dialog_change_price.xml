@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
-        android:hint="Enter new price"
+        android:hint="Enter new Price"
         android:padding="8dp"
         android:background="@drawable/description_background"
         android:clipToOutline="true"

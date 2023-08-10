@@ -204,7 +204,7 @@ public class ProductDetailsFragment extends Fragment {
     }
 
     private void showChangeDescriptionDialog(String initialDescription) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext(), R.style.RoundedDialog);
         builder.setTitle("Change Description")
                 .setView(R.layout.dialog_change_description)
                 .setPositiveButton("Save", new DialogInterface.OnClickListener() {
@@ -302,7 +302,7 @@ public class ProductDetailsFragment extends Fragment {
 
 
     private void showChangeQuantityDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext(), R.style.RoundedDialog);
         builder.setTitle("Change Quantity")
                 .setView(R.layout.dialog_change_quantity)
                 .setPositiveButton("Save", new DialogInterface.OnClickListener() {
@@ -323,8 +323,15 @@ public class ProductDetailsFragment extends Fragment {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
                     }
-                })
-                .show();
+                });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+
+        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+        layoutParams.copyFrom(alertDialog.getWindow().getAttributes());
+        layoutParams.width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 300, getResources().getDisplayMetrics());
+        layoutParams.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 200, getResources().getDisplayMetrics());
+        alertDialog.getWindow().setAttributes(layoutParams);
     }
 
     private void updateProductQuantity(String newQuantity) {

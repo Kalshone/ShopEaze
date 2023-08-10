@@ -6,13 +6,26 @@
     android:background="@drawable/gradient_with_image"
     android:paddingHorizontal="10dp">
 
+    <Button
+        android:id="@+id/refreshButton"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="25dp"
+        android:contentDescription="@string/refresh"
+        android:animation="@anim/rotate"
+        android:background="@drawable/refresh_button"
+        android:onClick="onRefreshButtonClick"
+        android:textColor="@color/light_gray" />
+
 
     <TextView
         android:id="@+id/textViewStoreName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="-20dp"
         android:textColor="@color/turquoise"
         android:textSize="32sp"
         android:textStyle="bold"
@@ -145,17 +158,7 @@
                 android:textSize="13sp" />
         </FrameLayout>
 
-        <Button
-            android:id="@+id/refreshButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="10dp"
-            android:contentDescription="@string/refresh"
-            android:animation="@anim/rotate"
-            android:background="@drawable/refresh_button"
-            android:onClick="onRefreshButtonClick"
-            android:textColor="@android:color/white" />
+
 
     </LinearLayout>
 

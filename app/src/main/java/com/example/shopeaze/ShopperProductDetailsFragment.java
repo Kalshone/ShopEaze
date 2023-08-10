@@ -58,7 +58,7 @@ public class ShopperProductDetailsFragment extends Fragment {
             public void onClick(View view) {
                 NavHostFragment.findNavController(ShopperProductDetailsFragment.this).popBackStack();
                 //NavHostFragment.findNavController(ShopperProductDetailsFragment.this)
-               //         .navigate(R.id.action_ShopperProductDetails_to_ProductsOffered);
+                //         .navigate(R.id.action_ShopperProductDetails_to_ProductsOffered);
             }
         });
 

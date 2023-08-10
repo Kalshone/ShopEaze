@@ -6,12 +6,69 @@
     android:background="@drawable/vector2_background"
     android:paddingHorizontal="10dp">
 
+    <Button
+        android:id="@+id/refreshButton"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="25dp"
+        android:contentDescription="@string/refresh"
+        android:animation="@anim/rotate"
+        android:background="@drawable/refresh_button"
+        android:onClick="onRefreshButtonClick"
+        android:textColor="@color/light_gray" />
+
+    <!-- <Button
+        android:id="@+id/logoutButton"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:text="Logout"
+        android:textColor="@color/navy_blue"
+        android:textSize="11sp"
+        android:fontFamily="@font/red_hat_display"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:backgroundTint="@color/secondary_gray"
+        android:background="@drawable/rounded_button"
+        android:clipToOutline="true"/> -->
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="-20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="My"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            android:fontFamily="@font/red_hat_display"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Orders"
+            android:layout_marginTop="0dp"
+            android:layout_marginLeft="6dp"
+            android:textColor="@color/turquoise"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/red_hat_display"/>
+
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/order_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_corner_imageview"
+        android:clipToOutline="true"/>
 
     <LinearLayout
         android:id="@+id/navigationBar"
@@ -141,17 +198,6 @@
                 android:layout_marginTop="10dp" />
         </FrameLayout>
 
-        <Button
-            android:id="@+id/refreshButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="10dp"
-            android:contentDescription="@string/refresh"
-            android:animation="@anim/rotate"
-            android:background="@drawable/refresh_button"
-            android:onClick="onRefreshButtonClick"
-            android:textColor="@android:color/white" />
 
     </LinearLayout>
 
