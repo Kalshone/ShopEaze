@@ -5,9 +5,9 @@
 * [Technologies](#technologies)
 
 ## General info
-A project focused on creating an online store with OOP principles.
+ShopEaze is a Java-based native Andrid shopping app developed using Android Studio, designed to create a smooth online store experience. Built with Object-Oriented Programming (OOP) principles, the app allows users to browse products, add items to their cart, and complete purchases seamlessly. The OOP approach ensures modularity, making the app scalable and easy to maintain. Features include an intuitive store view, product management, and a secure checkout process.
 
-Native application for Android devices.
+Feel free to explore the code and contribute!
 	
 ## Technologies
 ShopEaze is created with: <br>
